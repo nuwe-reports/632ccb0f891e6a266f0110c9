@@ -1,10 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import { RickAndMortyApp } from "./RickAndMortyApp";
+import { AppTheme } from "./theme";
 
-import { RickAndMortyApp } from './RickAndMortyApp'
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RickAndMortyApp />
+    <BrowserRouter>
+      <AppTheme>
+        <RickAndMortyApp />
+      </AppTheme>
+    </BrowserRouter>
   </React.StrictMode>
-)
+);
