@@ -1,4 +1,5 @@
 import {Routes, Route} from 'react-router-dom';
+import { Favorites } from '../principal/pages/Favorites';
 import { AuthRoutes } from './AuthRoutes';
 import { PrincipalRoutes } from './PrincipalRoutes';
 
@@ -10,6 +11,8 @@ export const AppRouter = () => {
 
     {/* App */}
     <Route path='/*' element={<PrincipalRoutes />} />
+    <Route path='/favorites' element={<Favorites />} />
+
     </Routes>
   )
 }
