@@ -31,9 +31,12 @@ export const CardItem = ({item}) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      <CardActions style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
         <Link component={RouterLink} size="small" color="primary" to='/favorites'>
           Favoritos
+        </Link>
+        <Link component={RouterLink} size="small" color="primary" to='/character/:id'>
+          Más información
         </Link>
       </CardActions>
     </Card>

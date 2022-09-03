@@ -1,72 +1,74 @@
 import { Link as RouterLink } from "react-router-dom";
 import { Google } from "@mui/icons-material";
 import { Grid, Typography, TextField, Button, Link } from "@mui/material";
+import { AuthLayout } from "../layout/AuthLayout";
+import { useDispatch } from "react-redux";
+import { useForm } from "../../hooks/useForm";
 
 export const LoginPage = () => {
+
+  const dispatch = useDispatch();
+
+  const {email, password, onInputChange} = useForm({
+    email:'Introduce tu email',
+    password:'Introduce tu contraseña'
+  });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log('submit');
+  }
+
+  const onGoogleSignIn = () => {
+    console.log('google')
+  }
   return (
-    <Grid
-      container
-      spacing={0}
-      direction="column"
-      alignItems="center"
-      justifyContent="center"
-      sx={{ minHeight: "100vh", backgroundColor: "primary.main", padding: 4 }}
-    >
-      <Grid
-        item
-        className="box-shadow"
-        xs={3}
-        sx={{ backgroundColor: "white", padding: 3, borderRadius: 2 }}
-      >
-        <Typography variant="h5" sx={{ mb: 5 }}>
-          Login
-        </Typography>
-        <form>
-          <Grid container>
-            <Grid item xs={12} sx={{ mt: 2 }}>
-              <TextField 
-                label='Correo'
-                type='email'
-                placeholder='Introduce tu e-mail'
-                fullWidth
-              />
-
-            </Grid>
-            <Grid item xs={12} sx={{ mt: 2 }}>
-              <TextField 
-                label='Password'
-                type='password'
-                placeholder='Introduce tu contraseña'
-                fullWidth
-              />
-            </Grid>
+    <AuthLayout title="Login">
+      <form onSubmit={onSubmit}>
+        <Grid container>
+          <Grid item xs={12} sx={{ mt: 2 }}>
+            <TextField
+              label="Correo"
+              type="email"
+              placeholder="Introduce tu e-mail"
+              fullWidth
+              name='email'
+              onChange={onInputChange}
+              value={email}
+            />
           </Grid>
-          <Grid container spacing={2} sx={{ mb:2, mt:1 }}>
+          <Grid item xs={12} sx={{ mt: 2 }}>
+            <TextField
+              label="Password"
+              type="password"
+              placeholder="Introduce tu contraseña"
+              fullWidth
+              name='password'
+              onChange={onInputChange}
+              value={password}
+            />
+          </Grid>
+
+          <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
             <Grid item xs={12} sm={6}>
-                <Button variant="contained" fullWidth>
-                  Login
-                </Button>
+              <Button variant="contained" type="submit" fullWidth>
+                Login
+              </Button>
             </Grid>
             <Grid item xs={12} sm={6}>
-            <Button variant="contained" fullWidth>
-
+              <Button variant="contained" fullWidth onClick={onGoogleSignIn}>
                 <Google />
-                <Typography sx={{ml:1}}>Google</Typography>
-            </Button>
+                <Typography sx={{ ml: 1 }}>Google</Typography>
+              </Button>
             </Grid>
-            
           </Grid>
-          <Grid
-            container
-            direction='row'
-            justifyContent='end'
-          >
-            <Link component={RouterLink} color='inherit' to='/auth/register'>
+          <Grid container direction="row" justifyContent="end">
+            <Link component={RouterLink} color="inherit" to="/auth/register">
               Crear Cuenta
             </Link>
           </Grid>
-        </form>
-      </Grid>
-    </Grid>
+        </Grid>
+      </form>
+    </AuthLayout>
   );
 };

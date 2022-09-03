@@ -1,6 +1,7 @@
 
 import { ImageGallery } from "../components/ImageGallery";
 import { PrincipalLayout } from "../layout/PrincipalLayout";
+import { Favorites } from "./Favorites";
 
 export const PrincipalPage = () => {
   return (
@@ -12,6 +13,7 @@ export const PrincipalPage = () => {
         consequuntur, ea earum natus!
       </Typography> */}
       <ImageGallery />
+     
     </PrincipalLayout>
   );
 };

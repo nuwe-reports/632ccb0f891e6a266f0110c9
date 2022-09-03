@@ -2,4 +2,16 @@
     width: 100px;
     height: 60px;
     border-radius: 50%;
+    margin-right: 10px;
+}
+
+.favorite-link{
+    font-weight: bold;
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.favorite-link:hover{
+    cursor: pointer;
+    color: white;
 }
