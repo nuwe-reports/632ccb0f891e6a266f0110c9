@@ -1,13 +1,15 @@
 
 import {Routes, Route, Navigate } from 'react-router-dom';
-import { PrincipalPage } from '../principal/pages';
+import { Favorites, InfoCharacter, PrincipalPage } from '../principal/pages';
 
 
 export const PrincipalRoutes = () => {
   return (
     <Routes>
         <Route path='/' element={<PrincipalPage />}/>
-        <Route path='/' element={<Navigate to='/' />}/>
+        <Route path='/favorites' element={<Favorites />}/>
+        <Route path='character/:id' element={<InfoCharacter />}/>
+        <Route path='/*' element={<Navigate to='/' />} />
     </Routes>
   )
 }

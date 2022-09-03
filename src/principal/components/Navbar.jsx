@@ -1,14 +1,22 @@
+import {Link as RouterLink} from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux'
 import { MenuOutlined, LogoutOutlined } from '@mui/icons-material';
 import {AppBar, Toolbar, IconButton, Grid, Typography, Link } from '@mui/material'
-import {Link as RouterLink} from 'react-router-dom'
 
 import './styles.css'
+import { startLogout } from '../../store/auth/thunks';
 export const Navbar = ({drawerWidth = 240}) => {
+
+    const dispatch = useDispatch()
+    const { displayName } = useSelector((state) => state.auth)
+    const onLogout = () => {
+        dispatch(startLogout());
+    }
   return (
     <AppBar 
     position='fixed'
     sx={{
-        width:{sm:`calc(100%`},
+        width:{sm:'100%'},
         ml: {sm:`${drawerWidth}px`}
     }}
     >
@@ -26,10 +34,10 @@ export const Navbar = ({drawerWidth = 240}) => {
                  
                    
                 <Typography variant="h6" noWrap component='div'>
-                    Facundo Herrera
+                    { displayName }
                 </Typography>
             
-                <IconButton color='error'>
+                <IconButton color='error' onClick={onLogout}>
                     <LogoutOutlined />
                 </IconButton>
             </Grid>

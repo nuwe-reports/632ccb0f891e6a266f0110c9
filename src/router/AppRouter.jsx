@@ -1,20 +1,34 @@
-import {Routes, Route} from 'react-router-dom';
-import { Favorites, InfoCharacter } from '../principal/pages';
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useCheckAuth } from "../hooks/useCheckAuth";
+import { PrincipalPage } from "../principal/pages";
 
-import { AuthRoutes } from './AuthRoutes';
-import { PrincipalRoutes } from './PrincipalRoutes';
+import { CheckingAuth } from "../UI/components/CheckingAuth";
+
+import { AuthRoutes } from "../auth/routes/AuthRoutes";
+import { PrincipalRoutes } from "./PrincipalRoutes";
+import { PrivateRoute } from './PrivateRoute';
 
 export const AppRouter = () => {
+
+  const { status } = useCheckAuth();
+  if (status === "checking") {
+    return <CheckingAuth />;
+  }
   return (
     <Routes>
-    {/* Login y registro */}
-        <Route path='/auth/*' element={<AuthRoutes />} />
+      {status === "authenticated" ? (
+        <Route path="/*" element={
+          <PrivateRoute>
+            <PrincipalRoutes />
+          </PrivateRoute>
+        } />
+      ) : (
+        <Route path="/auth/*" element={<AuthRoutes />} />
+      )}
+      {/* Login y registro */}
 
-    {/* App */}
-    <Route path='/*' element={<PrincipalRoutes />} />
-    <Route path='/favorites' element={<Favorites />} />
-    <Route path='/character/:id' element={<InfoCharacter />} />
-
+      {/* App */}
+      <Route path="/*" element={<Navigate to='/auth/login'/>} />
     </Routes>
-  )
-}
+  );
+};
