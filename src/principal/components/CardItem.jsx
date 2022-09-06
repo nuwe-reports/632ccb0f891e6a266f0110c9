@@ -1,41 +1,58 @@
 import { Link as RouterLink } from "react-router-dom";
+import { useDispatch } from 'react-redux'
 import {
   Typography,
   Card,
   CardContent,
   CardMedia,
-  Button,
   CardActionArea,
   CardActions,
-  Link
+  Link,
+  IconButton,
 } from "@mui/material";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { addFavorite } from "../../store/principal/characterSlice";
 
-export const CardItem = ({item}) => {
+export const CardItem = ({ character }) => {
+  const dispatch = useDispatch()
+  const onClickAddFavorite = () => {
+      dispatch(addFavorite())
+  }
   return (
-    <Card sx={{ maxWidth: 345}} key={item.title}>
+    <Card sx={{ maxWidth: 345, marginBottom: 5 }} key={character.title}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="300"
-          image="https://images.unsplash.com/file-1636585210491-f28ca34ea8ecimage"
           alt="green iguana"
-          sx={{padding:1}}
+          sx={{ padding: 1 }}
+          src={character.image}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            {character.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {character.species}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-        <Link component={RouterLink} size="small" color="primary" to='/favorites'>
-          Favoritos
-        </Link>
-        <Link component={RouterLink} size="small" color="primary" to='/character/:id'>
+      <CardActions
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <IconButton color="primary" aria-label="add to shopping cart" onClick={onClickAddFavorite}>
+          <AddShoppingCartIcon />
+        </IconButton>
+        <Link
+          component={RouterLink}
+          size="small"
+          color="primary"
+          to="/character/:id"
+        >
           Más información
         </Link>
       </CardActions>
