@@ -1,6 +1,7 @@
 
 import {Routes, Route, Navigate } from 'react-router-dom';
-import { Favorites, InfoCharacter, PrincipalPage } from '../principal/pages';
+import {  InfoCharacter, PrincipalPage } from '../principal/pages';
+import { Favorites } from '../principal/components/Favorites'
 
 
 export const PrincipalRoutes = () => {

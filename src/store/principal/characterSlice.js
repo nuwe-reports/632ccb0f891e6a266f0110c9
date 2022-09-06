@@ -7,8 +7,9 @@ export const characterSlice = createSlice ({
         characters: [],
         isLoading: false,
         prevPage:1,
-        favoritesCharacters: [],
-        activeCharacter:null
+        favorites: [],
+        active:null, 
+        
         
     },
     reducers:{
@@ -22,16 +23,21 @@ export const characterSlice = createSlice ({
             state.characters = action.payload.characters;
         },
         addFavorite: (state, action) => {
-            state.favoritesCharacters.push(action.payload);
-            state.isLoading = false;
+            state.favorites.push(action.payload);
+            
         },
-        setActiveCharacter: (state, action) => {
-            state.activeCharacter = action.payload;
+        setActiveFavorite: (state, action) => {
+            state.active = action.payload;
         },
         setFavorites:(state, action) => {
-            state.favoritesCharacters = action.payload;
+            state.favorites = action.payload;
+        },
+        clearCharactersLogout: (state ) => {
+            state.characters = [];
+            state.favorites = [];
+            state.active = null;
         }
     }
 })
 
-export const { startLoadingCharacters, setCharacters, addFavorite, setActiveCharacter } = characterSlice.actions
+export const { startLoadingCharacters, setCharacters, addFavorite, setActiveFavorite, setFavorites, savingNewFavorite, clearCharactersLogout } = characterSlice.actions

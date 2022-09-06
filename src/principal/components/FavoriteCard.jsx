@@ -1,4 +1,4 @@
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import {
   Typography,
@@ -9,19 +9,23 @@ import {
   CardActions,
   Link,
   IconButton,
+  Button,
+  Checkbox,
 } from "@mui/material";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { InfoCharacter } from "../pages";
 
-import { addFavoriteCharacter } from "../../store/principal/thunks";
 
-export const CardItem = ({ title, url, image, id, species, name }) => {
-  const { isSaving } = useSelector(state => state.characters);
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+export const CardItem = ({id, favorite, name, species, }) => {
+const navigate = useNavigate();
+ 
   const dispatch = useDispatch()
   const onClickAddFavorite = () => {
-      dispatch(addFavoriteCharacter({ url, image,  species, name}))
+      dispatch(addFavoriteCharacter({title, image, species}))
   }
   return (
-    <Card sx={{ maxWidth: 345, marginBottom: 5 }} key={title}>
+    <Card sx={{ maxWidth: 345, marginBottom: 5 , marginRight:10}} key={title}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -29,14 +33,18 @@ export const CardItem = ({ title, url, image, id, species, name }) => {
           alt={title}
           sx={{ padding: 1 }}
           src={image}
+          
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {name}
+          <Checkbox {...label} defaultChecked
+        sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} />
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {species}
           </Typography>
+
         </CardContent>
       </CardActionArea>
       <CardActions
@@ -46,17 +54,19 @@ export const CardItem = ({ title, url, image, id, species, name }) => {
           justifyContent: "space-between",
         }}
       >
+     
         <IconButton color="primary" aria-label="add to shopping cart" >
-          <AddShoppingCartIcon onClick={onClickAddFavorite}  />
+          <AddShoppingCartIcon onClick={onClickAddFavorite} disbled={isSaving} />
         </IconButton>
-        <Link
-          component={RouterLink}
-          size="small"
+       
+        <Button
+          variant="contained"
           color="primary"
-          to={`/character/:${id}`}
+          onClick={() => {navigate(<InfoCharacter />)}}
         >
           Más información
-        </Link>
+        </Button>
+       
       </CardActions>
     </Card>
   );

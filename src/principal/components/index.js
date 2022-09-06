@@ -1,2 +1,5 @@
 export * from './Navbar';
-export * from './SideBar';
+export * from './Favorites';
+export * from './CardItem';
+export * from './FavoriteCard';
+export * from './ImageGallery';
