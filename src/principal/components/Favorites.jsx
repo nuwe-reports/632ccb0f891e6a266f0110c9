@@ -1,15 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Navbar } from ".";
+
 import { Button, Grid, List } from "@mui/material";
-import { CardItem } from "./CardItem";
 import { FavoriteLayout } from "../layout/FavoriteLayout";
+import { FavoriteCard } from "./FavoriteCard";
 
 export const Favorites = () => {
   const navigate = useNavigate();
 
-  const { favorites } = useSelector((state) => state.characters);
 
+  const { favorites } = useSelector((state) => state.characters);
+  const dispatch = useDispatch();
   return (
     <FavoriteLayout>
       <Grid
@@ -51,7 +52,7 @@ export const Favorites = () => {
         >
           {favorites &&
             favorites.map((favorite) => (
-              <CardItem key={favorite.id} {...favorite} />
+              <FavoriteCard key={favorite.id} {...favorite} />
             ))}
         </List>
       </Grid>

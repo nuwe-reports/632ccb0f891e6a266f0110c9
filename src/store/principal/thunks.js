@@ -1,8 +1,8 @@
-import { collection, doc, setDoc } from "firebase/firestore/lite";
+import { collection, deleteDoc, doc, setDoc } from "firebase/firestore/lite";
 import { charactersApi } from "../../api/charactersApi";
 import { FirebaseDB } from "../../firebase/config";
 import { loadFavorites } from "../../helpers/loadFavorites";
-import { setCharacters, startLoadingCharacters, addFavorite  , setFavorites, setActiveFavorite, savingNewFavorite} from "./characterSlice";
+import { setCharacters, startLoadingCharacters, addFavorite  , setFavorites, setActiveFavorite, savingNewFavorite, deleteNoteById} from "./characterSlice";
 
 export const getCharacters = ( page = 1 ) => {
     
@@ -25,8 +25,7 @@ export const addFavoriteCharacter = ({ image, species, name}) => {
         const newFavorite = {
             name:name,
             image: image,
-            species: species,
-            
+            species: species  
         }
 
         const newFavoritesDoc = doc(collection(FirebaseDB, `${uid}/principal/favorites`))
@@ -49,5 +48,21 @@ export const startLoadingFavorites = () => {
 
         const favorites = await loadFavorites(uid);
         dispatch(setFavorites(favorites))
+    }
+}
+
+export const startDeletingFavorite = (id) => {
+    return async(dispatch, getState) => {
+        const {uid} = getState().auth;
+        const {active:favorite} = getState().characters;
+        const { id } = favorite;
+
+        // console.log({uid, id})
+        const favRef = doc(FirebaseDB, `${uid}/principal/favorites/${id}`);
+
+        
+        await deleteDoc(favRef);
+        
+        dispatch(deleteNoteById(id));
     }
 }

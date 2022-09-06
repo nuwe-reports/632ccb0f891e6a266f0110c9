@@ -15,7 +15,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { addFavoriteCharacter } from "../../store/principal/thunks";
 
 export const CardItem = ({ title, url, image, id, species, name }) => {
-  const { isSaving } = useSelector(state => state.characters);
+  
   const dispatch = useDispatch()
   const onClickAddFavorite = () => {
       dispatch(addFavoriteCharacter({ url, image,  species, name}))

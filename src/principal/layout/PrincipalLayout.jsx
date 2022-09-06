@@ -2,11 +2,11 @@ import {Box, Button} from '@mui/material';
 import { Navbar} from '../components';
 
 
-const drawerWidth = 240;
+
 export const PrincipalLayout = ({ children }) => {
   return (
     <>
-        <Navbar drawerWidth={drawerWidth}/>
+        <Navbar />
        
         <Box component='main' sx={{flexGrow:1, p:3}}>
             {children}

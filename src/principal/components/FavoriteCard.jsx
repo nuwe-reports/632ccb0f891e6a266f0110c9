@@ -1,4 +1,4 @@
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import {
   Typography,
@@ -9,24 +9,32 @@ import {
   CardActions,
   Link,
   IconButton,
-  Button,
   Checkbox,
 } from "@mui/material";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { InfoCharacter } from "../pages";
+import {DeleteOutlined} from '@mui/icons-material';
+import { startDeletingFavorite } from "../../store/principal/thunks";
+import { setActiveFavorite } from "../../store/principal/characterSlice";
 
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-export const CardItem = ({id, favorite, name, species, }) => {
-const navigate = useNavigate();
- 
-  const dispatch = useDispatch()
-  const onClickAddFavorite = () => {
-      dispatch(addFavoriteCharacter({title, image, species}))
+
+
+export const FavoriteCard = ({ title, url, image, id, species, name }) => {
+  const dispatch = useDispatch();
+
+  const onClickFavorite = () => {
+      dispatch(setActiveFavorite({ image, id, species, name}))
   }
+  const { favorites } = useSelector(state => state.characters);
+  
+
+  const onDelete = (id) => {
+    dispatch(startDeletingFavorite(id));
+  }
+
   return (
-    <Card sx={{ maxWidth: 345, marginBottom: 5 , marginRight:10}} key={title}>
+    <Card sx={{ maxWidth: 345, marginBottom: 5 }} key={title}  >
       <CardActionArea>
+        <Checkbox onClick={onClickFavorite} />
         <CardMedia
           component="img"
           height="300"
@@ -38,13 +46,10 @@ const navigate = useNavigate();
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {name}
-          <Checkbox {...label} defaultChecked
-        sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} />
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {species}
           </Typography>
-
         </CardContent>
       </CardActionArea>
       <CardActions
@@ -54,19 +59,17 @@ const navigate = useNavigate();
           justifyContent: "space-between",
         }}
       >
-     
-        <IconButton color="primary" aria-label="add to shopping cart" >
-          <AddShoppingCartIcon onClick={onClickAddFavorite} disbled={isSaving} />
+        <IconButton color="primary"  >
+          <DeleteOutlined onClick={onDelete} color='error'/>
         </IconButton>
-       
-        <Button
-          variant="contained"
+        <Link
+          component={RouterLink}
+          size="small"
           color="primary"
-          onClick={() => {navigate(<InfoCharacter />)}}
+          to={`/character/:${id}`}
         >
           Más información
-        </Button>
-       
+        </Link>
       </CardActions>
     </Card>
   );

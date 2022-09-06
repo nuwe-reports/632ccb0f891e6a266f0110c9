@@ -9,8 +9,6 @@ export const characterSlice = createSlice ({
         prevPage:1,
         favorites: [],
         active:null, 
-        
-        
     },
     reducers:{
         startLoadingCharacters: (state) => {
@@ -31,13 +29,17 @@ export const characterSlice = createSlice ({
         },
         setFavorites:(state, action) => {
             state.favorites = action.payload;
-        },
+        }, 
         clearCharactersLogout: (state ) => {
             state.characters = [];
             state.favorites = [];
             state.active = null;
-        }
+        },
+        deleteNoteById:(state, action) => {
+            state.active = null;
+            state.favorites = state.favorites.filter(favorite => favorite.id !== action.payload)
+        },
     }
 })
 
-export const { startLoadingCharacters, setCharacters, addFavorite, setActiveFavorite, setFavorites, savingNewFavorite, clearCharactersLogout } = characterSlice.actions
+export const { startLoadingCharacters, setCharacters, addFavorite, setActiveFavorite, setFavorites, savingNewFavorite, clearCharactersLogout, deleteNoteById } = characterSlice.actions

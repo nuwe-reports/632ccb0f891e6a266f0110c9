@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {useSelector, useDispatch } from 'react-redux';
 
 import{
   Button,
   Grid,
-  List,
-  Typography
+  List
 } from "@mui/material";
 import { CardItem } from "./CardItem";
 import { getCharacters } from '../../store/principal/thunks';
