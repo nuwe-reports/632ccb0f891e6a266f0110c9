@@ -11,6 +11,7 @@ export const PrincipalRoutes = () => {
       
       <Route path='/' element={<PrincipalPage />} />
       <Route path='/auth/login' element={<PrincipalPage />} />
+      <Route path='/auth/register' element={<PrincipalPage />} />
       <Route path="favorites" element={<Favorites />} />
       <Route path="character/:id" element={<FavoritePage />} />
       <Route path='*' element={<NotFound />} />
