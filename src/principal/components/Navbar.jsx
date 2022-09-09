@@ -50,7 +50,7 @@ export const Navbar = ({ drawerWidth = 240 }) => {
               component={RouterLink}
               size="small"
               color="secondary"
-              to="/"
+              to="/principal"
               className="favorite-link"
             >
               {" "}
