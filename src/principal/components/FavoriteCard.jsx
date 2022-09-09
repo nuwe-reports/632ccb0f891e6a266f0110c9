@@ -7,9 +7,6 @@ import {
   CardMedia,
   CardActionArea,
   CardActions,
-  Link,
-  IconButton,
-  Checkbox,
   Button,
 } from "@mui/material";
 import {DeleteOutlined} from '@mui/icons-material';
@@ -21,7 +18,7 @@ import { setActiveFavorite } from "../../store/principal/characterSlice";
 
 
 export const FavoriteCard = ({ title,  image, id, species, name, created }) => {
-  const { favorites } = useSelector(state => state.characters)
+  
   const dispatch = useDispatch();
 
   const onClickFavorite = () => {
@@ -34,7 +31,7 @@ export const FavoriteCard = ({ title,  image, id, species, name, created }) => {
 
 
   return (
-    <Card sx={{ maxWidth: 345, marginBottom: 5 }} key={title} className='animate__animated animate__fadeIn' onClick={onClickFavorite}  >
+    <Card sx={{ maxWidth: 345, marginBottom: 5 }} key={title} className='animate__animated animate__fadeIn'  >
       <CardActionArea>
        
         <CardMedia
@@ -62,8 +59,8 @@ export const FavoriteCard = ({ title,  image, id, species, name, created }) => {
           justifyContent: "center",
         }}
       >
-        <Button color="primary"  >
-         <DeleteOutlined style={{fontSize:30}} onClick={onDelete} color='error' />  
+        <Button color="primary" onClick={onDelete}   >
+         <DeleteOutlined style={{fontSize:30}} onClick={onClickFavorite} color='error' />  
         </Button>
         
       </CardActions>
