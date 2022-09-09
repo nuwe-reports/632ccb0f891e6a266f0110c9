@@ -34,7 +34,7 @@ export const RegisterPage = () => {
     dispatch(startCreatingUserWithEmailPassword(formState));
   }
   return (
-    <AuthLayout title="Register">
+    <AuthLayout title="Registro">
         <form onSubmit={onSubmit} className='animate__animated animate__fadeIn'>
             <Grid container>
                 <Grid item xs={12} sx={{mt:2}}>
