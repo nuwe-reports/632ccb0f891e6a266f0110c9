@@ -12,36 +12,25 @@ import {
 } from "@mui/material";
 
 import { addFavoriteCharacter } from "../../store/principal/thunks";
-import {
-  
-  isInFavoriteByName,
-  setActiveFavorite,
-} from "../../store/principal/characterSlice";
+import { setActiveFavorite } from "../../store/principal/characterSlice";
 import { FavoriteButton } from "./FavoriteButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
+import { isInfavorite } from "../../helpers/isInfavorites";
 
 export const CardItem = ({ title, url, image, id, species, name, created }) => {
-  const { favorites, characters } = useSelector((state) => state.characters);
-
-
-
+  const { favorites } = useSelector((state) => state.characters);
   const dispatch = useDispatch();
   const onClickAddFavorite = () => {
-    dispatch(addFavoriteCharacter({ url, image, species, name, id }));
-    
+    dispatch(addFavoriteCharacter({ url, image, species, name, id, created }));
   };
 
   const onCLickSelectCharacter = () => {
-    dispatch(setActiveFavorite({ image, id, species, name, created }));
+    dispatch(setActiveFavorite({ url, image, id, species, name, created }));
   };
 
   const onClickFavorite = () => {
-    dispatch(setActiveFavorite({ image, id, species, name }));
+    dispatch(setActiveFavorite({ image, id, species, name, created }));
   };
-
-
-
 
   return (
     <Card
@@ -49,7 +38,7 @@ export const CardItem = ({ title, url, image, id, species, name, created }) => {
       key={title}
       onClick={onClickFavorite}
     >
-      <CardActionArea >
+      <CardActionArea>
         <CardMedia
           component="img"
           height="300"
@@ -74,21 +63,13 @@ export const CardItem = ({ title, url, image, id, species, name, created }) => {
           justifyContent: "space-between",
         }}
       >
-   <FavoriteIcon /> :  <Button onClick={onClickAddFavorite}>
+        {isInfavorite(created, favorites) ? (
+          <FavoriteIcon color="success" />
+        ) : (
+          <Button onClick={onClickAddFavorite}>
             <FavoriteButton />
           </Button>
-  
-      
-
-      
-       
-        
-
-      
-          
-        
-        
-       
+        )}
 
         <Link
           component={RouterLink}

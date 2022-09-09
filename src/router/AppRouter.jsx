@@ -1,7 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useCheckAuth } from "../hooks/useCheckAuth";
-import { PrincipalPage } from "../principal/pages";
-
 import { CheckingAuth } from "../UI/components/CheckingAuth";
 
 import { AuthRoutes } from "../auth/routes/AuthRoutes";

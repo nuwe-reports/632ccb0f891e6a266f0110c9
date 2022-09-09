@@ -16,7 +16,7 @@ import { useSelector } from "react-redux";
 export const FavoritePage = () => {
   const { active, characters } = useSelector((state) => state.characters);
  
-  const { name, id, image, species } = active;
+  const { name, id, image, species, created } = active;
   
 
   return (
@@ -46,6 +46,9 @@ export const FavoritePage = () => {
               </Typography>
               <Typography variant="h6" color="text.secondary">
                 Specie: {species}
+              </Typography>
+              <Typography variant="span" color="text.secondary">
+                Created: {created}
               </Typography>
             
 

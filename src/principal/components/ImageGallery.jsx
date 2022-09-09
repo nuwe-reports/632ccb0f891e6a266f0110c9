@@ -14,9 +14,9 @@ import { PrincipalLayout } from '../layout/PrincipalLayout';
 
 
 
-export const ImageGallery = (id) => {
+export const ImageGallery = () => {
 
-  const {  isLoading, characters, page, prevPage, active, favorites } = useSelector(state  => state.characters);
+  const {  isLoading, characters, page, prevPage} = useSelector(state  => state.characters);
   
   
   const dispatch = useDispatch();

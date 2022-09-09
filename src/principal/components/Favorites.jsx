@@ -26,7 +26,7 @@ export const Favorites = () => {
        
         <List
           sx={{
-            width: "100%",
+            minWidth: "100vw",
             minHeight: '100vh',
             display: "flex",
             justifyContent: "space-around",

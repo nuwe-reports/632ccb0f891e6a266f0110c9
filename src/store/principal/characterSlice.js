@@ -44,11 +44,11 @@ export const characterSlice = createSlice ({
             state.active = null;
             state.selected = state.characters.find( character => character.id === action.payload)
         },
-        isInFavoriteByName:(state,action) => {
-            state.favorites = action.payload;
-            state.favorites = state.favorites.some(favorite => favorite.name === action.payload)
+        isInFavoriteByCreated:(state,action) => {
+            state.active = null;
+            state.favorites = state.favorites.some(favorite => favorite.created === action.payload)
         }
     }
 })
 
-export const { startLoadingCharacters, setCharacters, addFavorite, setActiveFavorite, setFavorites, savingNewFavorite, clearCharactersLogout, deleteNoteById, findCharacterById, isInFavoriteByName } = characterSlice.actions
+export const { startLoadingCharacters, setCharacters, addFavorite, setActiveFavorite, setFavorites, savingNewFavorite, clearCharactersLogout, deleteNoteById, findCharacterById, isInFavoriteByCreated } = characterSlice.actions

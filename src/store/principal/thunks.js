@@ -28,15 +28,16 @@ export const getCharacters = (page = 1) => {
   };
 };
 
-export const addFavoriteCharacter = ({ image, species, name }) => {
+export const addFavoriteCharacter = ({ image, species, name,created }) => {
   return async (dispatch, getState) => {
-    // dispatch(savingNewFavorite())
+   
     const { uid } = getState().auth;
 
     const newFavorite = {
       name: name,
       image: image,
       species: species,
+      created: created,
       
     };
 
@@ -81,14 +82,3 @@ export const startDeletingFavorite = (id) => {
     dispatch(deleteNoteById(id));
   };
 };
-
-// export const isInFavorite = () => {
-//   return async(dispatch, getState) => {
-//     const { uid } = getState().auth;
-//     const { active: favorite } = getState().characters;
-//     const { id } = favorite;
-
-//     const isInFav = doc(FirebaseDB,`${uid}/principal/favorites/${id}` )
-//     console.log(isInFav)
-//   }
-// }
