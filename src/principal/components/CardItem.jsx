@@ -40,7 +40,7 @@ export const CardItem = ({ title, url, image, id, species, name, created }) => {
 
   return (
     <Card
-      sx={{ maxWidth: 450, marginBottom: 5 }}
+      sx={{ maxWidth: 540, marginBottom: 5 }}
       key={title}
       onClick={onClickFavorite}
     >

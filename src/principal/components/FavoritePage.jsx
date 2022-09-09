@@ -24,7 +24,7 @@ export const FavoritePage = () => {
       <Grid
         container
         direction="row"
-        justifyContent="center"
+        justifyContent="space-around"
         alignItems="center"
         width="100%"
         height="100vh"

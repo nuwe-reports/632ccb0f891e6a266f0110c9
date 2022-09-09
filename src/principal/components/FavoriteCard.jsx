@@ -31,7 +31,7 @@ export const FavoriteCard = ({ title,  image, id, species, name, created }) => {
 
 
   return (
-    <Card sx={{ maxWidth: 345, marginBottom: 5 }} key={title} className='animate__animated animate__fadeIn'  >
+    <Card sx={{ maxWidth: 450, marginBottom: 5 }} key={title} className='animate__animated animate__fadeIn'  >
       <CardActionArea>
        
         <CardMedia

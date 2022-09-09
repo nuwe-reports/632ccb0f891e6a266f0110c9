@@ -18,7 +18,7 @@ export const Favorites = () => {
         direction="row"
         justifyContent="space-between"
         alignItems="center"
-        width="100vw"
+        width="90vw"
         
         sx={{backgroundColor:'orangered', marginTop:10}}
         
@@ -26,7 +26,7 @@ export const Favorites = () => {
        
         <List
           sx={{
-            minWidth: "100%",
+            width: "100vw",
             minHeight: '100vh',
             display: "flex",
             justifyContent: "space-around",
