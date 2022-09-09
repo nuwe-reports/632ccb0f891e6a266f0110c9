@@ -16,6 +16,8 @@ import { setActiveFavorite } from "../../store/principal/characterSlice";
 import { FavoriteButton } from "./FavoriteButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { isInfavorite } from "../../helpers/isInfavorites";
+import {DeleteOutlined} from '@mui/icons-material';
+import { startDeletingFavorite } from "../../store/principal/thunks";
 
 export const CardItem = ({ title, url, image, id, species, name, created }) => {
   const { favorites } = useSelector((state) => state.characters);
@@ -31,6 +33,10 @@ export const CardItem = ({ title, url, image, id, species, name, created }) => {
   const onClickFavorite = () => {
     dispatch(setActiveFavorite({ image, id, species, name, created }));
   };
+
+  const onDelete = (id) => {
+    dispatch(startDeletingFavorite(id));
+  }
 
   return (
     <Card
@@ -64,7 +70,12 @@ export const CardItem = ({ title, url, image, id, species, name, created }) => {
         }}
       >
         {isInfavorite(created, favorites) ? (
-          <FavoriteIcon color="success" />
+          <>
+
+          <FavoriteIcon color="success" /> <Button color="primary" onClick={onDelete}   >
+         <DeleteOutlined style={{fontSize:30}} onClick={onClickFavorite} color='error' />  
+        </Button>
+          </>
         ) : (
           <Button onClick={onClickAddFavorite}>
             <FavoriteButton />
