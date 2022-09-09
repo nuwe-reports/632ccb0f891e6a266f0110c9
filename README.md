@@ -61,7 +61,8 @@ Para poder iniciar el presente proyecto debe ejectuar : yarn dev.
   ## Pagina 404
   ![not found](https://user-images.githubusercontent.com/90207514/189444783-9a06eee1-9c3c-404c-95b8-21b371e6d520.jpg)
 
-
-  Autor ✒️.
-
-  Facundo Emmanuel Herrera
+ ## Demo
+ https://rickandmortychallengefh.netlify.app/auth/login
+ 
+ Autor ✒️.
+ Facundo Emmanuel Herrera
