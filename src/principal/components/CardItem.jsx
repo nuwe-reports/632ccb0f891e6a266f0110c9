@@ -1,5 +1,5 @@
 import { Link as RouterLink } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 import {
   Typography,
   Card,
@@ -8,21 +8,48 @@ import {
   CardActionArea,
   CardActions,
   Link,
-  IconButton,
+  Button,
 } from "@mui/material";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import { addFavoriteCharacter } from "../../store/principal/thunks";
-
-export const CardItem = ({ title, url, image, id, species, name }) => {
+import {
   
-  const dispatch = useDispatch()
+  isInFavoriteByName,
+  setActiveFavorite,
+} from "../../store/principal/characterSlice";
+import { FavoriteButton } from "./FavoriteButton";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
+
+export const CardItem = ({ title, url, image, id, species, name, created }) => {
+  const { favorites, characters } = useSelector((state) => state.characters);
+
+
+
+  const dispatch = useDispatch();
   const onClickAddFavorite = () => {
-      dispatch(addFavoriteCharacter({ url, image,  species, name}))
-  }
+    dispatch(addFavoriteCharacter({ url, image, species, name, id }));
+    
+  };
+
+  const onCLickSelectCharacter = () => {
+    dispatch(setActiveFavorite({ image, id, species, name, created }));
+  };
+
+  const onClickFavorite = () => {
+    dispatch(setActiveFavorite({ image, id, species, name }));
+  };
+
+
+
+
   return (
-    <Card sx={{ maxWidth: 345, marginBottom: 5 }} key={title}>
-      <CardActionArea>
+    <Card
+      sx={{ maxWidth: 450, marginBottom: 5 }}
+      key={title}
+      onClick={onClickFavorite}
+    >
+      <CardActionArea >
         <CardMedia
           component="img"
           height="300"
@@ -39,6 +66,7 @@ export const CardItem = ({ title, url, image, id, species, name }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
+
       <CardActions
         style={{
           display: "flex",
@@ -46,16 +74,29 @@ export const CardItem = ({ title, url, image, id, species, name }) => {
           justifyContent: "space-between",
         }}
       >
-        <IconButton color="primary" aria-label="add to shopping cart" >
-          <AddShoppingCartIcon onClick={onClickAddFavorite}  />
-        </IconButton>
+   <FavoriteIcon /> :  <Button onClick={onClickAddFavorite}>
+            <FavoriteButton />
+          </Button>
+  
+      
+
+      
+       
+        
+
+      
+          
+        
+        
+       
+
         <Link
           component={RouterLink}
           size="small"
           color="primary"
-          to={`/character/:${id}`}
+          to={`character/${id}`}
         >
-          Más información
+          <Button onClick={onCLickSelectCharacter}>Más información </Button>
         </Link>
       </CardActions>
     </Card>

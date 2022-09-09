@@ -13,5 +13,5 @@ export const loadFavorites = async(uid = '') => {
         favorites.push({id: doc.id, ...doc.data()});
         
      })
-     return favorites;
+     return favorites
 }

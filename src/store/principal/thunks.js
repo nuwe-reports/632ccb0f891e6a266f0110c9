@@ -1,68 +1,94 @@
-import { collection, deleteDoc, doc, setDoc } from "firebase/firestore/lite";
+import { async } from "@firebase/util";
+import { collection, deleteDoc, doc, getDoc, setDoc } from "firebase/firestore/lite";
 import { charactersApi } from "../../api/charactersApi";
 import { FirebaseDB } from "../../firebase/config";
 import { loadFavorites } from "../../helpers/loadFavorites";
-import { setCharacters, startLoadingCharacters, addFavorite  , setFavorites, setActiveFavorite, savingNewFavorite, deleteNoteById} from "./characterSlice";
+import {
+  setCharacters,
+  startLoadingCharacters,
+  addFavorite,
+  setFavorites,
+  setActiveFavorite,
+  deleteNoteById,
+} from "./characterSlice";
 
-export const getCharacters = ( page = 1 ) => {
-    
-    
-    return async (dispatch) => {
-        dispatch(startLoadingCharacters());
+export const getCharacters = (page = 1) => {
+  return async (dispatch) => {
+    dispatch(startLoadingCharacters());
 
-       
-        const { data } = await charactersApi.get(`/character/?page=${page}`);
+    const { data } = await charactersApi.get(`/character/?page=${page}`);
+
+    dispatch(
+      setCharacters({
+        characters: data.results,
+        page: page + 1,
+        prevPage: page - 1,
+      })
+    );
+  };
+};
+
+export const addFavoriteCharacter = ({ image, species, name }) => {
+  return async (dispatch, getState) => {
+    // dispatch(savingNewFavorite())
+    const { uid } = getState().auth;
+
+    const newFavorite = {
+      name: name,
+      image: image,
+      species: species,
       
-        dispatch(setCharacters({characters: data.results, page: page + 1, prevPage: page - 1}))
-    }
-}
+    };
 
-export const addFavoriteCharacter = ({ image, species, name}) => {
-    return async (dispatch, getState) =>{
-        // dispatch(savingNewFavorite())
-        const { uid } = getState().auth;
+    const newFavoritesDoc = doc(
+      collection(FirebaseDB, `${uid}/principal/favorites`)
+    );
+    await setDoc(newFavoritesDoc, newFavorite);
 
-        const newFavorite = {
-            name:name,
-            image: image,
-            species: species  
-        }
+    newFavorite.id = newFavoritesDoc.id;
 
-        const newFavoritesDoc = doc(collection(FirebaseDB, `${uid}/principal/favorites`))
-        await setDoc(newFavoritesDoc, newFavorite);
+    dispatch(addFavorite(newFavorite));
+    dispatch(setActiveFavorite(newFavorite));
+    
+  };
+};
 
-       
-        newFavorite.id = newFavoritesDoc.id;
-       
 
-        dispatch(addFavorite(newFavorite));
-        dispatch(setActiveFavorite(newFavorite));
-    }
-}
+
 
 export const startLoadingFavorites = () => {
-    return async(dispatch, getState) => {
-        const { uid } = getState().auth;
-        
-        if(!uid)throw new Error('UID inexistente');
+  return async (dispatch, getState) => {
+    const { uid } = getState().auth;
 
-        const favorites = await loadFavorites(uid);
-        dispatch(setFavorites(favorites))
-    }
-}
+    if (!uid) throw new Error("UID inexistente");
+
+    const favorites = await loadFavorites(uid);
+    dispatch(setFavorites(favorites));
+  };
+};
 
 export const startDeletingFavorite = (id) => {
-    return async(dispatch, getState) => {
-        const {uid} = getState().auth;
-        const {active:favorite} = getState().characters;
-        const { id } = favorite;
+  return async (dispatch, getState) => {
+    const { uid } = getState().auth;
+    const { active: favorite } = getState().characters;
+    const { id } = favorite;
 
-        // console.log({uid, id})
-        const favRef = doc(FirebaseDB, `${uid}/principal/favorites/${id}`);
+    // console.log({uid, id})
+    const favRef = doc(FirebaseDB, `${uid}/principal/favorites/${id}`);
 
-        
-        await deleteDoc(favRef);
-        
-        dispatch(deleteNoteById(id));
-    }
-}
+    await deleteDoc(favRef);
+
+    dispatch(deleteNoteById(id));
+  };
+};
+
+// export const isInFavorite = () => {
+//   return async(dispatch, getState) => {
+//     const { uid } = getState().auth;
+//     const { active: favorite } = getState().characters;
+//     const { id } = favorite;
+
+//     const isInFav = doc(FirebaseDB,`${uid}/principal/favorites/${id}` )
+//     console.log(isInFav)
+//   }
+// }

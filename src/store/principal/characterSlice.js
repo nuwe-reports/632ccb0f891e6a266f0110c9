@@ -8,7 +8,8 @@ export const characterSlice = createSlice ({
         isLoading: false,
         prevPage:1,
         favorites: [],
-        active:null, 
+        active:null,
+        selected: [] 
     },
     reducers:{
         startLoadingCharacters: (state) => {
@@ -19,10 +20,10 @@ export const characterSlice = createSlice ({
             state.page = action.payload.page;
             state.prevPage = action.payload.prevPage;
             state.characters = action.payload.characters;
+            
         },
         addFavorite: (state, action) => {
-            state.favorites.push(action.payload);
-            
+            state.favorites.push(action.payload);    
         },
         setActiveFavorite: (state, action) => {
             state.active = action.payload;
@@ -39,7 +40,15 @@ export const characterSlice = createSlice ({
             state.active = null;
             state.favorites = state.favorites.filter(favorite => favorite.id !== action.payload)
         },
+        findCharacterById:(state, action) => {
+            state.active = null;
+            state.selected = state.characters.find( character => character.id === action.payload)
+        },
+        isInFavoriteByName:(state,action) => {
+            state.favorites = action.payload;
+            state.favorites = state.favorites.some(favorite => favorite.name === action.payload)
+        }
     }
 })
 
-export const { startLoadingCharacters, setCharacters, addFavorite, setActiveFavorite, setFavorites, savingNewFavorite, clearCharactersLogout, deleteNoteById } = characterSlice.actions
+export const { startLoadingCharacters, setCharacters, addFavorite, setActiveFavorite, setFavorites, savingNewFavorite, clearCharactersLogout, deleteNoteById, findCharacterById, isInFavoriteByName } = characterSlice.actions

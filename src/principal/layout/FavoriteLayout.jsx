@@ -1,16 +1,23 @@
-import {Box, Button} from '@mui/material';
+import {Box, Grid} from '@mui/material';
 import { Navbar} from '../components';
 
 
-const drawerWidth = 240;
+
 export const FavoriteLayout = ({ children }) => {
   return (
-    <>
-        <Navbar drawerWidth={drawerWidth}/>
+     <Grid
+    container
+    spacing={ 0 }
+    direction= 'column'
+    alignItems='center'
+    justifyContent='center'
+    sx={{minHeight:'100vh'}}
+    >
+        <Navbar />
        
-        <Box component='main' sx={{flexGrow:1, p:3}}>
+        <Grid component='main' sx={{flexGrow:1, p:4, backgroundColor:'orangered', minHeight:'100vh' }} >
             {children}
-        </Box>
-    </>
+        </Grid>
+    </Grid>
   )
 }

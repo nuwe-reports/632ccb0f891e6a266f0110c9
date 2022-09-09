@@ -11,15 +11,23 @@ import { getCharacters } from '../../store/principal/thunks';
 import { PrincipalLayout } from '../layout/PrincipalLayout';
 
 
-export const ImageGallery = () => {
 
-  const {  isLoading, characters, page, prevPage } = useSelector(state  => state.characters);
+
+
+export const ImageGallery = (id) => {
+
+  const {  isLoading, characters, page, prevPage, active, favorites } = useSelector(state  => state.characters);
+  
+  
   const dispatch = useDispatch();
+  
+
   
   
   useEffect(() => {
     dispatch(getCharacters());
   },[]);
+  
   
 
  
@@ -34,27 +42,27 @@ export const ImageGallery = () => {
       justifyContent="space-between"
       alignItems="center"
       width='100%'
-      height='100vh'
-     
+      className='animate__animated animate__fadeIn'
+      sx={{backgroundColor:'orange', marginTop:3}}
     >
       
       
       
-      <Grid container alignItems='center' width='100%' justifyContent='space-around' >
+      {/* <Grid container alignItems='center' width='100%'  justifyContent='space-around' > */}
 
       <Button variant="outlined" disabled={isLoading} onClick={ () => dispatch(getCharacters(prevPage)) } >Anterior </Button> 
      
       <Button variant="outlined" disabled={isLoading}  onClick={() => dispatch(getCharacters(page)) }>Siguiente</Button> 
      
-      </Grid>
+      {/* </Grid> */}
      
       <List
-        sx={{ width: '100%', height: 600 , display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap'}} cols={3} rowHeight={164}
+        sx={{ width: '100%', height: '100', backgroundColor:'orange' , display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', minHeight:'100vh'}} cols={3} 
         gap={4}
         
       >
         {characters && characters.map((character) => (
-                <CardItem key={character.id} {...character} />
+            <CardItem key={character.id} {...character}  />
           ))}
       </List>
       
