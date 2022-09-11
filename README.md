@@ -19,7 +19,7 @@ Contenido y características.
 - **Información consistente al estar todo en firebase.**
 
 
-Comenzando 🚀.
+# Comenzando 🚀.
 
  ## Background
 Este proyecto fue muy interesante de realizar, me decidí en utilizar react, redux y firebase para todo lo relacionado al login y registro de usuario, como asimismo    para el registro de mis favoritos, para solventar las  peticiones a la API utilicé Axios. 
