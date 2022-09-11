@@ -62,7 +62,7 @@ export const ImageGallery = () => {
         
       >
         {characters && characters.map((character) => (
-            <CardItem key={character.id} {...character}  />
+            <CardItem  key={character.id} {...character}  />
           ))}
       </List>
       

@@ -1,5 +1,5 @@
-import { async } from "@firebase/util";
-import { collection, deleteDoc, doc, getDoc, setDoc } from "firebase/firestore/lite";
+
+import { collection, deleteDoc, doc,  setDoc } from "firebase/firestore/lite";
 import { charactersApi } from "../../api/charactersApi";
 import { FirebaseDB } from "../../firebase/config";
 import { loadFavorites } from "../../helpers/loadFavorites";
@@ -9,7 +9,8 @@ import {
   addFavorite,
   setFavorites,
   setActiveFavorite,
-  deleteNoteById,
+  deleteCharacterByName,
+  setActiveCharacter,
 } from "./characterSlice";
 
 export const getCharacters = (page = 1) => {
@@ -17,7 +18,8 @@ export const getCharacters = (page = 1) => {
     dispatch(startLoadingCharacters());
 
     const { data } = await charactersApi.get(`/character/?page=${page}`);
-
+    
+    
     dispatch(
       setCharacters({
         characters: data.results,
@@ -25,10 +27,11 @@ export const getCharacters = (page = 1) => {
         prevPage: page - 1,
       })
     );
+    dispatch(setActiveCharacter())
   };
 };
 
-export const addFavoriteCharacter = ({ image, species, name,created }) => {
+export const addFavoriteCharacter = ({ image, species, name,created ,status}) => {
   return async (dispatch, getState) => {
    
     const { uid } = getState().auth;
@@ -38,7 +41,7 @@ export const addFavoriteCharacter = ({ image, species, name,created }) => {
       image: image,
       species: species,
       created: created,
-      
+      status:status
     };
 
     const newFavoritesDoc = doc(
@@ -68,17 +71,20 @@ export const startLoadingFavorites = () => {
   };
 };
 
-export const startDeletingFavorite = (id) => {
+export const startDeletingFavorite = () => {
   return async (dispatch, getState) => {
     const { uid } = getState().auth;
     const { active: favorite } = getState().characters;
-    const { id } = favorite;
+    const { name } = favorite;
 
     // console.log({uid, id})
-    const favRef = doc(FirebaseDB, `${uid}/principal/favorites/${id}`);
+    const favRef = doc(FirebaseDB, `${uid}/principal/favorites/${name}`);
 
     await deleteDoc(favRef);
 
-    dispatch(deleteNoteById(id));
+   
+    dispatch(deleteCharacterByName(name));
   };
 };
+
+

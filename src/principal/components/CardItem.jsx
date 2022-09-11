@@ -11,49 +11,58 @@ import {
   Button,
 } from "@mui/material";
 
-import { addFavoriteCharacter } from "../../store/principal/thunks";
-import { setActiveFavorite } from "../../store/principal/characterSlice";
+import { addFavoriteCharacter, startDeletingFavorite } from "../../store/principal/thunks";
+import { setActiveCharacter, setActiveFavorite } from "../../store/principal/characterSlice";
 import { FavoriteButton } from "./FavoriteButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { isInfavorite } from "../../helpers/isInfavorites";
-import {DeleteOutlined} from '@mui/icons-material';
-import { startDeletingFavorite } from "../../store/principal/thunks";
+import { DeleteOutlined } from "@mui/icons-material";
 
-export const CardItem = ({ title, url, image, id, species, name, created }) => {
-  const { favorites } = useSelector((state) => state.characters);
+
+
+export const CardItem = ({ title, url, image, id, species, name, created,status }) => {
+  const { favorites, active } = useSelector((state) => state.characters);
+ 
+   
   const dispatch = useDispatch();
+
   const onClickAddFavorite = () => {
-    dispatch(addFavoriteCharacter({ url, image, species, name, id, created }));
+    dispatch(addFavoriteCharacter({ url, image, species, name, id, created,status }));
   };
 
   const onCLickSelectCharacter = () => {
-    dispatch(setActiveFavorite({ url, image, id, species, name, created }));
+    dispatch(setActiveCharacter({  image, id, species, name, created,status }));
+    
   };
-
+  
   const onClickFavorite = () => {
-    dispatch(setActiveFavorite({ image, id, species, name, created }));
+    dispatch(setActiveFavorite({ image, id, species, name, created,status }));
   };
 
-  const onDelete = (id) => {
-    dispatch(startDeletingFavorite(id));
+  const onDelete = (name) => {
+    dispatch(startDeletingFavorite(name, favorites))
   }
+ 
 
   return (
     <Card
-      sx={{ maxWidth: 540, marginBottom: 5 }}
+      sx={{ maxWidth: 540, marginBottom: 2 }}
       key={title}
-      onClick={onClickFavorite}
+      onClick={onCLickSelectCharacter}
     >
       <CardActionArea>
         <CardMedia
           component="img"
           height="300"
           alt={title}
-          sx={{ padding: 1 }}
+          sx={{ padding: 1,marginBottom:1 }}
           src={image}
+
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+        {isInfavorite(created,favorites) ? <FavoriteIcon style={{position:'relative', bottom:'310px', left:'230px', fontSize:'40px'}} color="success" /> : <FavoriteIcon color='warning' style={{position:'relative', bottom:'310px', left:'230px', fontSize:'40px'}}/>}
+        
+          <Typography  variant="h5" component="div">
             {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -71,11 +80,11 @@ export const CardItem = ({ title, url, image, id, species, name, created }) => {
       >
         {isInfavorite(created, favorites) ? (
           <>
-
-          <FavoriteIcon color="success" /> <Button color="primary" onClick={onDelete}   >
-         <DeleteOutlined style={{fontSize:30}} onClick={onClickFavorite} color='error' />  
-        </Button>
-          </>
+            {" "}
+            <Button color="primary" onClick={ onDelete }   >
+                <DeleteOutlined color="error" />
+            </Button>
+           </>
         ) : (
           <Button onClick={onClickAddFavorite}>
             <FavoriteButton />

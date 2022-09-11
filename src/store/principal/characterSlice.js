@@ -28,6 +28,9 @@ export const characterSlice = createSlice ({
         setActiveFavorite: (state, action) => {
             state.active = action.payload;
         },
+        setActiveCharacter: (state, action) => {
+            state.active = action.payload;
+        },
         setFavorites:(state, action) => {
             state.favorites = action.payload;
         }, 
@@ -36,9 +39,13 @@ export const characterSlice = createSlice ({
             state.favorites = [];
             state.active = null;
         },
-        deleteNoteById:(state, action) => {
+        deleteCharacterById:(state, action) => {
             state.active = null;
             state.favorites = state.favorites.filter(favorite => favorite.id !== action.payload)
+        },
+        deleteCharacterByName:(state, action) => {
+            state.active = null;
+            state.favorites = state.favorites.filter(favorite => favorite.name !== action.payload)
         },
         findCharacterById:(state, action) => {
             state.active = null;
@@ -51,4 +58,4 @@ export const characterSlice = createSlice ({
     }
 })
 
-export const { startLoadingCharacters, setCharacters, addFavorite, setActiveFavorite, setFavorites, savingNewFavorite, clearCharactersLogout, deleteNoteById, findCharacterById, isInFavoriteByCreated } = characterSlice.actions
+export const { startLoadingCharacters, setCharacters, addFavorite, setActiveFavorite, setFavorites, savingNewFavorite, clearCharactersLogout, deleteCharacterById, findCharacterById, isInFavoriteByCreated, setActiveCharacter, deleteCharacterByName } = characterSlice.actions

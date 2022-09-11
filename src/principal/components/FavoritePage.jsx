@@ -14,9 +14,9 @@ import {
 import { useSelector } from "react-redux";
 
 export const FavoritePage = () => {
-  const { active, characters } = useSelector((state) => state.characters);
+  const { active } = useSelector((state) => state.characters);
  
-  const { name, id, image, species, created } = active;
+  const { name, id, image, species, created, status } = active;
   
 
   return (
@@ -31,7 +31,7 @@ export const FavoritePage = () => {
         className="animate__animated animate__fadeIn"
         style={{ backgroundColor: "steelblue" }}
       >
-        <Card sx={{ maxWidth: 345, marginBottom: 5 }} key={id}>
+        <Card sx={{ maxWidth: 500, marginBottom: 5, minHeight:550 }} key={id}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -44,10 +44,13 @@ export const FavoritePage = () => {
               <Typography gutterBottom variant="h4" component="div">
                 Name: {name}
               </Typography>
+              <Typography variant="h5" color="text.secondary">
+                Status: {status}
+              </Typography>
               <Typography variant="h6" color="text.secondary">
                 Specie: {species}
               </Typography>
-              <Typography variant="span" color="text.secondary">
+              <Typography variant="h6" color="text.secondary">
                 Created: {created}
               </Typography>
             

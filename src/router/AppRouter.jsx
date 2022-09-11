@@ -4,7 +4,7 @@ import { useCheckAuth } from "../hooks/useCheckAuth";
 import { CheckingAuth } from "../UI/components/CheckingAuth";
 
 import { AuthRoutes } from "../auth/routes/AuthRoutes";
-import { PrincipalRoutes } from "./PrincipalRoutes";
+import { PrincipalRoutes } from "../principal/routes/PrincipalRoutes";
 
 export const AppRouter = () => {
   const { status } = useCheckAuth();
@@ -14,11 +14,12 @@ export const AppRouter = () => {
   return (
     <Routes>
       //{" "}
-      { status === 'not-authenticated' ? (
-        <Route path="/auth/*" element={<AuthRoutes />} />
+      { status === 'authenticated' ? (
+       
+        <Route path="/*" element={<PrincipalRoutes />} /> 
         
       ) : (
-        <Route path="/*" element={<PrincipalRoutes />} />
+        <Route path="/auth/*" element={<AuthRoutes />} />
       )}
       <Route path="/*" element={<Navigate to="/auth/login" />} />
       
