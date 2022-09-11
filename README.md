@@ -14,7 +14,7 @@ Contenido y características.
 
 4.Agregar a favoritos, borrar de favoritos.
 
-5.Ver informacón de creacion de cada personaje en su tarjeta particular.
+5.Ver información de creacion de cada personaje en su tarjeta particular.
 
 6.Información consistente al estar todo en firebase.
 
@@ -32,7 +32,7 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar react, red
   a)yarn create vite\
   b)yarn\
   React Router Dom:\ 
-  a)yarn add react-router-dom@6\
+  a)yarn add react-router-dom@6:\
   Materia UI:\
   a) yarn add @mui/material @emotion/react @emotion/styled\
   Iconos de Material UI:\
