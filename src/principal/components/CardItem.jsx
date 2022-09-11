@@ -11,38 +11,58 @@ import {
   Button,
 } from "@mui/material";
 
-import { addFavoriteCharacter, startDeletingFavorite } from "../../store/principal/thunks";
-import { setActiveCharacter, setActiveFavorite } from "../../store/principal/characterSlice";
+import {
+  addFavoriteCharacter,
+  startDeletingFavorite,
+} from "../../store/principal/thunks";
+import {
+  setActiveCharacter,
+  setActiveFavorite,
+} from "../../store/principal/characterSlice";
 import { FavoriteButton } from "./FavoriteButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { isInfavorite } from "../../helpers/isInfavorites";
 import { DeleteOutlined } from "@mui/icons-material";
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.css";
 
-
-
-export const CardItem = ({ title, url, image, id, species, name, created,status }) => {
+export const CardItem = ({
+  title,
+  url,
+  image,
+  id,
+  species,
+  name,
+  created,
+  status,
+}) => {
   const { favorites, active } = useSelector((state) => state.characters);
- 
-   
+
   const dispatch = useDispatch();
 
   const onClickAddFavorite = () => {
-    dispatch(addFavoriteCharacter({ url, image, species, name, id, created,status }));
+    dispatch(
+      addFavoriteCharacter({ url, image, species, name, id, created, status })
+    );
   };
 
   const onCLickSelectCharacter = () => {
-    dispatch(setActiveCharacter({  image, id, species, name, created,status }));
-    
+    dispatch(setActiveCharacter({ image, id, species, name, created, status }));
   };
-  
+
   const onClickFavorite = () => {
-    dispatch(setActiveFavorite({ image, id, species, name, created,status }));
+    dispatch(setActiveFavorite({ image, id, species, name, created, status }));
   };
 
   const onDelete = (name) => {
-    dispatch(startDeletingFavorite(name, favorites))
-  }
- 
+    dispatch(startDeletingFavorite(name, favorites));
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Tu favorito fue eliminado",
+      showConfirmButton: dispatch(startDeletingFavorite(name, favorites)),
+    });
+  };
 
   return (
     <Card
@@ -55,14 +75,33 @@ export const CardItem = ({ title, url, image, id, species, name, created,status 
           component="img"
           height="350"
           alt={title}
-          sx={{ padding: 1,marginBottom:1 }}
+          sx={{ padding: 1, marginBottom: 1 }}
           src={image}
-
         />
         <CardContent>
-        {isInfavorite(created,favorites) ? <FavoriteIcon style={{position:'absolute', bottom:'390px', left:'300px', fontSize:'40px'}} color="success" /> : <FavoriteIcon color='warning' style={{position:'absolute', bottom:'390px', left:'300px', fontSize:'40px'}}/>}
-        
-          <Typography  variant="h5" component="div">
+          {isInfavorite(created, favorites) ? (
+            <FavoriteIcon
+              style={{
+                position: "absolute",
+                bottom: "390px",
+                left: "300px",
+                fontSize: "40px",
+              }}
+              color="success"
+            />
+          ) : (
+            <FavoriteIcon
+              color="warning"
+              style={{
+                position: "absolute",
+                bottom: "390px",
+                left: "300px",
+                fontSize: "40px",
+              }}
+            />
+          )}
+
+          <Typography variant="h5" component="div">
             {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -81,10 +120,10 @@ export const CardItem = ({ title, url, image, id, species, name, created,status 
         {isInfavorite(created, favorites) ? (
           <>
             {" "}
-            <Button color="primary" onClick={ onDelete }   >
-                <DeleteOutlined color="error" />
+            <Button color="primary" onClick={onDelete}>
+              <DeleteOutlined color="error" />
             </Button>
-           </>
+          </>
         ) : (
           <Button onClick={onClickAddFavorite}>
             <FavoriteButton />

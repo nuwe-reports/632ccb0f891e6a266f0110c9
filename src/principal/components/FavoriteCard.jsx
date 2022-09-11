@@ -11,7 +11,8 @@ import {
 import {DeleteOutlined} from '@mui/icons-material';
 import { startDeletingFavorite } from "../../store/principal/thunks";
 import { setActiveFavorite } from "../../store/principal/characterSlice";
-
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.css";
 
 
 
@@ -25,7 +26,13 @@ export const FavoriteCard = ({ title,  image, id, species, name, created }) => {
   }
  
   const onDelete = (id) => {
-    dispatch(startDeletingFavorite(id));
+    dispatch(startDeletingFavorite(id))
+    Swal.fire({
+      position: "center",
+      icon: "info",
+      title: "Tu favorito fue eliminado",
+      showConfirmButton: true,
+    });
   }
 
 
