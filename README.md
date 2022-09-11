@@ -55,7 +55,8 @@ Para poder iniciar el presente proyecto debe ejectuar : yarn dev.
   ![cardfavorite](https://user-images.githubusercontent.com/90207514/189324078-9e760368-869d-4f11-b53d-26dbbd032055.jpg)
   
   ## Tarjeta con información relevante del contacto
-  ![cardcaracter](https://user-images.githubusercontent.com/90207514/189324182-2258066c-83f0-4aff-a354-85745721a512.jpg)
+ ![pagecard2](https://user-images.githubusercontent.com/90207514/189533800-bd33dab5-f39b-46a0-80a6-a478cfacdaae.jpg)
+
   
   ## Pagina 404
   ![not found](https://user-images.githubusercontent.com/90207514/189444783-9a06eee1-9c3c-404c-95b8-21b371e6d520.jpg)
