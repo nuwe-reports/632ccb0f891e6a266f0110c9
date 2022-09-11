@@ -2,11 +2,10 @@
 
 # Proyecto Challenge Rick And Morty 
 
-**Api utilizada: https://rickandmortyapi.com/**
 
  ## Background
 Este proyecto fue muy interesante de realizar, me decidí en utilizar **react, redux y firebase** para todo lo relacionado al login y registro de usuario, como asimismo    para el registro de mis favoritos, para solventar las  peticiones a la API utilicé **Axios**. 
- Para los estilos utilice **Material UI** y para navegar dentro de mi aplicación el **react-router-dom en su versión 6**. 
+ Para los estilos me decidí por **Material UI** y para navegar dentro de mi aplicación el **react-router-dom en su versión 6**. 
 
 ## Contenido y características.
 
@@ -14,7 +13,7 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar **react, r
 
 - **Login y logout.**
 
-- **Recorrer listado de personajes paginadamente.**
+- **Recorrer listado de personajes de manera paginada.**
 
 - **Agregar a favoritos, borrar de favoritos.**
 
@@ -39,7 +38,7 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar **react, r
    #### Animaciones
   - ***yarn add animate.css*** 
 
-#### Para poder iniciar el presente proyecto debe ejectuar  
+####  Ejectuar nuestra aplicación 
 - ***yarn dev***
 
 ## Construido con 🛠️. 
@@ -50,6 +49,8 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar **react, r
   * Firebase 
   * Redux 
   * Vite
+ 
+ ### **Api utilizada: https://rickandmortyapi.com/**
   
   # Imagenes
   
@@ -59,7 +60,7 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar **react, r
   ## Registro de usuarios
   ![Registro](https://user-images.githubusercontent.com/90207514/189323341-1d181900-89cb-4450-9d9f-da7851c3ef1d.jpg)
   
-  ## Navbar con el nombre del usuario autenticado y los links para moverse entre el home y nuestrso favoritos
+  ## Navbar con el nombre del usuario autenticado y los links para moverse entre el home y nuestros personajes favoritos
   ![navbarusuario](https://user-images.githubusercontent.com/90207514/189323500-b1aa2aa6-0c04-4cf5-aa1f-4993451e101b.jpg)
   
   ## Pagina principal
