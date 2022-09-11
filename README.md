@@ -21,6 +21,7 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar **react, r
 
 - **Información consistente al estar todo en firebase.**
 
+- **Api utilizada: https://rickandmortyapi.com/**
 # Comenzando 🚀.
 
  ## Instalaciones necesarias
@@ -38,7 +39,7 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar **react, r
    #### Animaciones
   - ***yarn add animate.css*** 
 
-####  Ejectuar nuestra aplicación 
+####  Ejecutar nuestra aplicación 
 - ***yarn dev***
 
 ## Construido con 🛠️. 
@@ -49,10 +50,8 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar **react, r
   * Firebase 
   * Redux 
   * Vite
- 
- ### **Api utilizada: https://rickandmortyapi.com/**
   
-  # Imagenes
+  # Imágenes
   
   ## Login con email y password
   ![logdef](https://user-images.githubusercontent.com/90207514/189541271-3b48dc36-d012-4152-9205-f463cb79f4ea.jpg)
