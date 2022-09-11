@@ -30,13 +30,13 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar react, red
  ## Instalaciones necesarias
  ### Iniciar el proyecto: 
   a)yarn create vite\
-  b)yarn \
+  b)yarn\
   React Router Dom:\ 
   a)yarn add react-router-dom@6\
   Materia UI:\
   a) yarn add @mui/material @emotion/react @emotion/styled\
   Iconos de Material UI:\
-  yarn add @mui/icons-material\
+  yarn add @mui/icons-material
 
 Para poder iniciar el presente proyecto debe ejectuar : yarn dev.
 
