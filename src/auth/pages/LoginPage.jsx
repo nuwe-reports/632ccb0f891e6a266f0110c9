@@ -1,10 +1,10 @@
 import { Link as RouterLink } from "react-router-dom";
-import { Google } from "@mui/icons-material";
+
 import { Grid, Typography, TextField, Button, Link, Alert } from "@mui/material";
 import { AuthLayout } from "../layout/AuthLayout";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "../../hooks/useForm";
-import {startGoogleSignIn, startLoadingWithEmailPassword} from '../../store/auth/thunks'
+import { startLoadingWithEmailPassword} from '../../store/auth/thunks'
 import { useMemo } from "react";
 
 
@@ -27,9 +27,7 @@ export const LoginPage = () => {
     dispatch(startLoadingWithEmailPassword({email, password}))
   }
 
-  const onGoogleSignIn = () => {
-    dispatch(startGoogleSignIn())
-  }
+
   return (
     <AuthLayout title="Login" >
       <form onSubmit={onSubmit} className='animate__animated animate__fadeIn' >

@@ -12,11 +12,11 @@ export const checkingAuthentication = ( email, password ) => {
 export const startCreatingUserWithEmailPassword = ({email,password, displayName}) => {
     return async(dispatch) => {
         dispatch(checkingCredentials());
-        const { ok, uid, photoUrl, errorMessage } = await registerUserWithEmailPassword({email, password, displayName});
+        const { ok, uid,  errorMessage } = await registerUserWithEmailPassword({email, password, displayName});
 
         if(!ok) return dispatch(logout({errorMessage}));
 
-        dispatch(login({uid, displayName, photoUrl, email}))
+        dispatch(login({uid, displayName,  email}))
     }
 }
 

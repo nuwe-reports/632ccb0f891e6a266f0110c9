@@ -41,7 +41,7 @@ export const useForm = ( initialForm = {}, formValidations = {} ) => {
 
     
     const createValidators = () => {
-            // Clase 278 Paso 3
+            
             const formCheckedValues = {};
 
            

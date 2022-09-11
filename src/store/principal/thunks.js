@@ -1,5 +1,4 @@
-
-import { collection, deleteDoc, doc,  setDoc } from "firebase/firestore/lite";
+import { collection, deleteDoc, doc, setDoc } from "firebase/firestore/lite";
 import { charactersApi } from "../../api/charactersApi";
 import { FirebaseDB } from "../../firebase/config";
 import { loadFavorites } from "../../helpers/loadFavorites";
@@ -18,8 +17,7 @@ export const getCharacters = (page = 1) => {
     dispatch(startLoadingCharacters());
 
     const { data } = await charactersApi.get(`/character/?page=${page}`);
-    
-    
+
     dispatch(
       setCharacters({
         characters: data.results,
@@ -27,13 +25,18 @@ export const getCharacters = (page = 1) => {
         prevPage: page - 1,
       })
     );
-    dispatch(setActiveCharacter())
+    dispatch(setActiveCharacter());
   };
 };
 
-export const addFavoriteCharacter = ({ image, species, name,created ,status}) => {
+export const addFavoriteCharacter = ({
+  image,
+  species,
+  name,
+  created,
+  status,
+}) => {
   return async (dispatch, getState) => {
-   
     const { uid } = getState().auth;
 
     const newFavorite = {
@@ -41,7 +44,7 @@ export const addFavoriteCharacter = ({ image, species, name,created ,status}) =>
       image: image,
       species: species,
       created: created,
-      status:status
+      status: status,
     };
 
     const newFavoritesDoc = doc(
@@ -53,12 +56,8 @@ export const addFavoriteCharacter = ({ image, species, name,created ,status}) =>
 
     dispatch(addFavorite(newFavorite));
     dispatch(setActiveFavorite(newFavorite));
-    
   };
 };
-
-
-
 
 export const startLoadingFavorites = () => {
   return async (dispatch, getState) => {
@@ -77,14 +76,10 @@ export const startDeletingFavorite = () => {
     const { active: favorite } = getState().characters;
     const { name } = favorite;
 
-    // console.log({uid, id})
     const favRef = doc(FirebaseDB, `${uid}/principal/favorites/${name}`);
 
     await deleteDoc(favRef);
 
-   
     dispatch(deleteCharacterByName(name));
   };
 };
-
-

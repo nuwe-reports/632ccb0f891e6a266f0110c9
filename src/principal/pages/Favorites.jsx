@@ -1,6 +1,4 @@
-
 import {  useSelector } from "react-redux";
-
 import {  Grid, List } from "@mui/material";
 import { FavoriteLayout } from "../layout/FavoriteLayout";
 import { FavoriteCard } from "../components/FavoriteCard";
