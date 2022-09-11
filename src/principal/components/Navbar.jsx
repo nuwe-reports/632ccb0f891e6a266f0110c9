@@ -1,6 +1,6 @@
 import { Link as RouterLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { MenuOutlined, LogoutOutlined } from "@mui/icons-material";
+import {  LogoutOutlined } from "@mui/icons-material";
 import {
   AppBar,
   Toolbar,
@@ -9,12 +9,14 @@ import {
   Typography,
   Link,
 } from "@mui/material";
-
+import MenuIcon from "@mui/icons-material/Menu";
 import "./styles.css";
 import { startLogout } from "../../store/auth/thunks";
-export const Navbar = ({ drawerWidth = 240 }) => {
+
+export const Navbar = () => {
   const dispatch = useDispatch();
   const { displayName } = useSelector((state) => state.auth);
+
   const onLogout = () => {
     dispatch(startLogout());
   };
@@ -23,18 +25,12 @@ export const Navbar = ({ drawerWidth = 240 }) => {
       position="fixed"
       sx={{
         width: { sm: "100%" },
-        ml: { sm: `${drawerWidth}px` },
+        ml: { sm: "100%" },
+        xs: { display: "flex", flexDirection: "column" },
+        md: { display: "flex", flexDirection: "column" },
       }}
     >
       <Toolbar>
-        <IconButton
-          color="inherit"
-          edge="start"
-          sx={{ mr: 2, display: { sm: "none" } }}
-        >
-          <MenuOutlined />
-        </IconButton>
-
         <Grid
           container
           direction="row"
@@ -42,10 +38,13 @@ export const Navbar = ({ drawerWidth = 240 }) => {
           alignItems="center"
         >
           <div
-            style={{ display: "flex", alignItems: "center", width: "200px", justifyContent:'space-around' }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              width: "200px",
+              justifyContent: "space-around",
+            }}
           >
-            
-            
             <Link
               component={RouterLink}
               size="small"
@@ -54,7 +53,7 @@ export const Navbar = ({ drawerWidth = 240 }) => {
               className="favorite-link"
             >
               {" "}
-              Home{" "}
+              Principal{" "}
             </Link>
             <Link
               component={RouterLink}
@@ -68,20 +67,16 @@ export const Navbar = ({ drawerWidth = 240 }) => {
             </Link>
           </div>
 
-
-
           <div
             style={{ display: "flex", alignItems: "center", width: "200px" }}
           >
-            
-          <Typography variant="h6" noWrap component="div">
-            {displayName}
-          </Typography>
-          <IconButton color="error" onClick={onLogout}>
-            <LogoutOutlined />
-          </IconButton>
+            <Typography variant="h6" noWrap component="div">
+              {displayName}
+            </Typography>
+            <IconButton color="warning" onClick={onLogout}>
+              <LogoutOutlined />
+            </IconButton>
           </div>
-
         </Grid>
       </Toolbar>
     </AppBar>

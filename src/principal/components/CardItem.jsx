@@ -60,7 +60,7 @@ export const CardItem = ({ title, url, image, id, species, name, created,status 
 
         />
         <CardContent>
-        {isInfavorite(created,favorites) ? <FavoriteIcon style={{position:'relative', bottom:'360px', left:'280px', fontSize:'40px'}} color="success" /> : <FavoriteIcon color='warning' style={{position:'relative', bottom:'360px', left:'280px', fontSize:'40px'}}/>}
+        {isInfavorite(created,favorites) ? <FavoriteIcon style={{position:'absolute', bottom:'390px', left:'300px', fontSize:'40px'}} color="success" /> : <FavoriteIcon color='warning' style={{position:'relative', bottom:'360px', left:'280px', fontSize:'40px'}}/>}
         
           <Typography  variant="h5" component="div">
             {name}

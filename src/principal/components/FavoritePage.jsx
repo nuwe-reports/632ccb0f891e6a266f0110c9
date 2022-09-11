@@ -24,54 +24,38 @@ export const FavoritePage = () => {
       <Grid
         container
         direction="row"
-        justifyContent="space-around"
+        justifyContent="center"
         alignItems="center"
+        gap='20px'
         width="100%"
         height="100vh"
         className="animate__animated animate__fadeIn"
-        style={{ backgroundColor: "steelblue" }}
-      >
-        <Card sx={{ maxWidth: 500, marginBottom: 5, minHeight:550 }} key={id}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="300"
-              alt={name}
-              sx={{ padding: 1 }}
-              image={image}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h4" component="div">
-                Name: {name}
-              </Typography>
-              <Typography variant="h5" color="text.secondary">
-                Status: {status}
-              </Typography>
-              <Typography variant="h6" color="text.secondary">
-                Specie: {species}
-              </Typography>
-              <Typography variant="h6" color="text.secondary">
-                Created: {created}
-              </Typography>
+        style={{ backgroundColor: "#53F13A" }}
+        
+      > 
+      
+      <Grid item display='flex' flexDirection='column' color='slategray' >
+          <h1> Nombre: {name} </h1> 
+          <h3> Status: {status} </h3>
+          <h4> Specie: {species} </h4>
+          <h6> Creado: {created}</h6>
+          <Link sx={{
+           fontSize:'25px',
+            textDecoration:'none',
+            border: '1px solid black',
+            textAlign:'center',
+            backgroundColor:'whitesmoke',
+            borderRadius:'5px',
+            objectFit:'cover',
+            objectPosition:'center',
             
-
-            </CardContent>
-          </CardActionArea>
-          <CardActions
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Link sx={{
-              fontSize:'25px',
-              textDecoration:'none'
-            }} component={RouterLink} size="small" color="primary" to={"/"}>
-              Home
-            </Link>
-          </CardActions>
-        </Card>
+          }} component={RouterLink} size="small" color="primary" to={"/"}>
+             Principal
+          </Link>
+      </Grid>
+      <Grid item >
+          <img src={image} alt="imagendelpersonaje" width='500px' style={{borderRadius:'50%'}} /> 
+      </Grid>
       </Grid>
     </>
   );
