@@ -21,6 +21,23 @@ Contenido y características.
 
 Comenzando 🚀.
 
+ ## Background
+Este proyecto fue muy interesante de realizar, me decidí en utilizar react, redux y firebase para todo lo relacionado al login y registro de usuario, como asimismo    para el registro de mis favoritos, para solventar las  peticiones a la API utilicé Axios. 
+ Para los estilos utilice Material UI y para navegar dentro de mi aplicación el react-router-dom en su versión 6. 
+ Este proyecto básicamente nos permite registrarnos, loguearnos, recorrer todos los personajes de la serie Rick and Morty, poder seleccionar nuestros personajes favoritos como así también eliminarlos de nuestra lista y también tener información detallada de los personajes.
+
+
+ ## Instalaciones necesarias
+ ### Iniciar el proyecto: 
+  a)yarn create vite
+  b)yarn 
+  React Router Dom: 
+  a)yarn add react-router-dom@6
+  Materia UI:
+  a) yarn add @mui/material @emotion/react @emotion/styled
+  Iconos de Material UI:
+  yarn add @mui/icons-material
+
 Para poder iniciar el presente proyecto debe ejectuar : yarn dev.
 
 ## Construido con 🛠️. 
