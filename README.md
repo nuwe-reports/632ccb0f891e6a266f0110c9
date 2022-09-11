@@ -30,7 +30,7 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar react, red
  ## Instalaciones necesarias
  ### Iniciar el proyecto: 
   a)yarn create vite
-  b)yarn 
+  b)yarn .\
   React Router Dom: 
   a)yarn add react-router-dom@6
   Materia UI:
