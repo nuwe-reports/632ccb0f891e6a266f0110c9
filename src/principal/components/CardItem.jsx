@@ -53,14 +53,14 @@ export const CardItem = ({ title, url, image, id, species, name, created,status 
       <CardActionArea>
         <CardMedia
           component="img"
-          height="300"
+          height="350"
           alt={title}
           sx={{ padding: 1,marginBottom:1 }}
           src={image}
 
         />
         <CardContent>
-        {isInfavorite(created,favorites) ? <FavoriteIcon style={{position:'relative', bottom:'310px', left:'230px', fontSize:'40px'}} color="success" /> : <FavoriteIcon color='warning' style={{position:'relative', bottom:'310px', left:'230px', fontSize:'40px'}}/>}
+        {isInfavorite(created,favorites) ? <FavoriteIcon style={{position:'relative', bottom:'360px', left:'280px', fontSize:'40px'}} color="success" /> : <FavoriteIcon color='warning' style={{position:'relative', bottom:'360px', left:'280px', fontSize:'40px'}}/>}
         
           <Typography  variant="h5" component="div">
             {name}
