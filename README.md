@@ -35,8 +35,9 @@ Para poder iniciar el presente proyecto debe ejectuar : yarn dev.
   # Imagenes
   
   ## Login con email y password
+  ![logdef](https://user-images.githubusercontent.com/90207514/189541271-3b48dc36-d012-4152-9205-f463cb79f4ea.jpg)
+
   
-  ![login](https://user-images.githubusercontent.com/90207514/189323033-f010c096-753b-402a-bee4-6793f5800d9f.jpg)
   
 
   ## Registro de usuarios
@@ -52,15 +53,24 @@ Para poder iniciar el presente proyecto debe ejectuar : yarn dev.
   ![favoritelist](https://user-images.githubusercontent.com/90207514/189323935-750e1c16-3561-4065-8b8c-d3fb5bca5568.jpg)
   
   ## Imagen de un personaje seleccionado como favorito
-  ![cardfavorite](https://user-images.githubusercontent.com/90207514/189324078-9e760368-869d-4f11-b53d-26dbbd032055.jpg)
   
+  ![favdef](https://user-images.githubusercontent.com/90207514/189541284-8c947dfc-88de-4bbb-934b-16491913eef0.jpg)
+  
+  ## Imagen de un personaje no seleccionado como favorito 
+  ![nofavdef](https://user-images.githubusercontent.com/90207514/189541297-fcc02683-74f3-4ac4-825b-3c642d2c2678.jpg)
+
+
   ## Tarjeta con información relevante del contacto
  ![pagecard2](https://user-images.githubusercontent.com/90207514/189533800-bd33dab5-f39b-46a0-80a6-a478cfacdaae.jpg)
 
   
   ## Pagina 404
   ![not found](https://user-images.githubusercontent.com/90207514/189444783-9a06eee1-9c3c-404c-95b8-21b371e6d520.jpg)
+  
+  ## Alerta confirmación de eliminación de favoritos
+  ![alertadef](https://user-images.githubusercontent.com/90207514/189541320-06bfcb01-333a-4146-b5c0-1c12f213b21d.jpg)
 
+  
  ## Demo
  https://rickmortyapp22fh.netlify.app/auth/login
  
