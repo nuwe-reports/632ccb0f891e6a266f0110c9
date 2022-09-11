@@ -38,8 +38,6 @@ Para poder iniciar el presente proyecto debe ejectuar : yarn dev.
   
   ![login](https://user-images.githubusercontent.com/90207514/189323033-f010c096-753b-402a-bee4-6793f5800d9f.jpg)
   
-  ## Login con usuario de Google
-  ![login google](https://user-images.githubusercontent.com/90207514/189323122-14ce2ecd-bc5b-4043-9a73-73c819b1b972.jpg)
 
   ## Registro de usuarios
   ![Registro](https://user-images.githubusercontent.com/90207514/189323341-1d181900-89cb-4450-9d9f-da7851c3ef1d.jpg)
@@ -49,7 +47,6 @@ Para poder iniciar el presente proyecto debe ejectuar : yarn dev.
   
   ## Pagina principal
   ![home](https://user-images.githubusercontent.com/90207514/189323754-9dd2ef94-b3bf-454d-a4bf-fd0211615d2b.jpg)
-
 
   ## Lista de favoritos
   ![favoritelist](https://user-images.githubusercontent.com/90207514/189323935-750e1c16-3561-4065-8b8c-d3fb5bca5568.jpg)
@@ -64,7 +61,7 @@ Para poder iniciar el presente proyecto debe ejectuar : yarn dev.
   ![not found](https://user-images.githubusercontent.com/90207514/189444783-9a06eee1-9c3c-404c-95b8-21b371e6d520.jpg)
 
  ## Demo
- https://rickandmortyappfh22.netlify.app/auth/login
+ https://rickmortyapp22fh.netlify.app/auth/login
  
  Autor ✒️.
  Facundo Emmanuel Herrera
