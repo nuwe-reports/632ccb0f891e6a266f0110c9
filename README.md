@@ -26,6 +26,8 @@ Para poder iniciar el presente proyecto debe ejectuar : yarn dev.
 ## Construido con 🛠️. 
   * ReactJS
   * Material UI
+  * React-router-dom
+  * Axios
   * Firebase 
   * Redux 
   * Vite
