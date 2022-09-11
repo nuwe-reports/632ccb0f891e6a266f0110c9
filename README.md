@@ -4,7 +4,11 @@
 
 **Api utilizada: https://rickandmortyapi.com/**
 
-Contenido y características.
+ ## Background
+Este proyecto fue muy interesante de realizar, me decidí en utilizar **react, redux y firebase** para todo lo relacionado al login y registro de usuario, como asimismo    para el registro de mis favoritos, para solventar las  peticiones a la API utilicé **Axios**. 
+ Para los estilos utilice **Material UI** y para navegar dentro de mi aplicación el **react-router-dom en su versión 6**. 
+
+## Contenido y características.
 
 - **Registro de usuarios.**
 
@@ -18,14 +22,7 @@ Contenido y características.
 
 - **Información consistente al estar todo en firebase.**
 
-
 # Comenzando 🚀.
-
- ## Background
-Este proyecto fue muy interesante de realizar, me decidí en utilizar react, redux y firebase para todo lo relacionado al login y registro de usuario, como asimismo    para el registro de mis favoritos, para solventar las  peticiones a la API utilicé Axios. 
- Para los estilos utilice Material UI y para navegar dentro de mi aplicación el react-router-dom en su versión 6. 
- Este proyecto básicamente nos permite registrarnos, loguearnos, recorrer todos los personajes de la serie Rick and Morty, poder seleccionar nuestros personajes favoritos como así también eliminarlos de nuestra lista y también tener información detallada de los personajes.
-
 
  ## Instalaciones necesarias
  #### Iniciar el proyecto
@@ -33,10 +30,14 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar react, red
   - ***yarn***
   #### React Router Dom
   - ***yarn add react-router-dom@6***
-  #### Materia UI:
+  #### Materia UI
   -  ***yarn add @mui/material @emotion/react @emotion/styled***
-  #### Iconos de Material UI:
+  #### Iconos de Material UI
   - ***yarn add @mui/icons-material***
+   #### SweetAlert
+  - ***yarn add sweetalert2***
+   #### Animaciones
+  - ***yarn add animate.css*** 
 
 #### Para poder iniciar el presente proyecto debe ejectuar  
 - ***yarn dev***
@@ -54,9 +55,6 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar react, red
   
   ## Login con email y password
   ![logdef](https://user-images.githubusercontent.com/90207514/189541271-3b48dc36-d012-4152-9205-f463cb79f4ea.jpg)
-
-  
-  
 
   ## Registro de usuarios
   ![Registro](https://user-images.githubusercontent.com/90207514/189323341-1d181900-89cb-4450-9d9f-da7851c3ef1d.jpg)
@@ -88,7 +86,6 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar react, red
   ## Alerta confirmación de eliminación de favoritos
   ![alertadef](https://user-images.githubusercontent.com/90207514/189541320-06bfcb01-333a-4146-b5c0-1c12f213b21d.jpg)
 
-  
  ## Demo
  ***https://rickmortyapp22fh.netlify.app/auth/login***
  
