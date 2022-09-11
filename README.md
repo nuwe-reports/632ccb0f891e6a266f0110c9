@@ -2,21 +2,21 @@
 
 # Proyecto Challenge Rick And Morty 
 
-Api utilizada: https://rickandmortyapi.com/
+**Api utilizada: https://rickandmortyapi.com/**
 
 Contenido y características.
 
-1.Registro de usuarios.
+- **Registro de usuarios.**
 
-2.Login y logout.
+- **Login y logout.**
 
-3.Recorrer listado de personajes paginadamente.
+- **Recorrer listado de personajes paginadamente.**
 
-4.Agregar a favoritos, borrar de favoritos.
+- **Agregar a favoritos, borrar de favoritos.**
 
-5.Ver información de creacion de cada personaje en su tarjeta particular.
+- **Ver información de creacion de cada personaje en su tarjeta particular.**
 
-6.Información consistente al estar todo en firebase.
+- **Información consistente al estar todo en firebase.**
 
 
 Comenzando 🚀.
@@ -36,7 +36,7 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar react, red
   #### Materia UI:
   -  ***yarn add @mui/material @emotion/react @emotion/styled***
   #### Iconos de Material UI:
-  ***yarn add @mui/icons-material***
+  - ***yarn add @mui/icons-material***
 
 #### Para poder iniciar el presente proyecto debe ejectuar  
 - ***yarn dev***
@@ -90,7 +90,7 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar react, red
 
   
  ## Demo
- https://rickmortyapp22fh.netlify.app/auth/login
+ ***https://rickmortyapp22fh.netlify.app/auth/login***
  
- Autor ✒️.
- Facundo Emmanuel Herrera
+ ## Autor ✒️.
+ **Facundo Emmanuel Herrera**
