@@ -10,7 +10,6 @@ import {
   Link,
   Button,
 } from "@mui/material";
-
 import { addFavoriteCharacter } from "../../store/principal/thunks";
 import { setActiveCharacter } from "../../store/principal/characterSlice";
 import { FavoriteButton } from "./FavoriteButton";
@@ -44,6 +43,7 @@ export const CardItem = ({
     dispatch(setActiveCharacter({ image, id, species, name, created, status }));
   };
 
+
   return (
     <Card
       sx={{ maxWidth: 450, marginBottom: 2 }}
@@ -58,7 +58,7 @@ export const CardItem = ({
           sx={{ padding: 1, marginBottom: 1 }}
           src={image}
         />
-        <CardContent>
+        <CardContent sx={{display: { xs: 'none', lg: 'block', xl: 'block' }}}>
           {isInfavorite(created, favorites) ? (
             <FavoriteIcon
               style={{
@@ -66,7 +66,9 @@ export const CardItem = ({
                 bottom: "390px",
                 left: "300px",
                 fontSize: "40px",
+                
               }}
+              
               color="success"
             />
           ) : (
@@ -77,6 +79,7 @@ export const CardItem = ({
                 bottom: "390px",
                 left: "300px",
                 fontSize: "40px",
+                
               }}
             />
           )}

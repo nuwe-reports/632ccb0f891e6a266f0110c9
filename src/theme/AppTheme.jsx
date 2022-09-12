@@ -10,3 +10,11 @@ export const AppTheme = ({children}) => {
         </ThemeProvider>
     )
 }
+
+export const breakpointstheme = ({children})  => {
+    return(
+        <ThemeProvider theme={breakpointstheme}>
+            {children}
+        </ThemeProvider>
+    )
+}

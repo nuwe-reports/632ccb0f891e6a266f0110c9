@@ -25,8 +25,8 @@ export const Navbar = () => {
       sx={{
         width: { sm: "100%" },
         ml: { sm: "100%" },
-        xs: { display: "flex", flexDirection: "column" },
-        md: { display: "flex", flexDirection: "column" },
+         display: { xs: 'none', lg: 'block', xl: 'none' } 
+        
       }}
     >
       <Toolbar>
