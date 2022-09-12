@@ -10,12 +10,12 @@ export const FavoriteLayout = ({ children }) => {
     spacing={ 0 }
     direction= 'column'
     alignItems='center'
-    justifyContent='center'
+    justifyContent='space-around'
     sx={{minHeight:'100vh'}}
     >
         <Navbar />
        
-        <Grid component='main' sx={{flexGrow:1, p:4, backgroundColor:'orangered', minHeight:'100vh' }} >
+        <Grid component='main' sx={{flexGrow:1, p:3, backgroundColor:'orangered', minHeight:'100vh',minWidth:'100%', display:'flex', alignItems:'end', justifyContent:'space-between' }} >
             {children}
         </Grid>
     </Grid>

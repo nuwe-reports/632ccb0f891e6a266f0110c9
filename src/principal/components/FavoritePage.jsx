@@ -19,7 +19,7 @@ export const FavoritePage = () => {
         width="100%"
         height="100vh"
         className="animate__animated animate__fadeIn"
-        style={{ backgroundColor: "#53F13A" }}
+        style={{ backgroundColor: "#49ff2d" }}
       >
         <Grid item display="flex" flexDirection="column" color="slategray">
           <h1> Nombre: {name} </h1>

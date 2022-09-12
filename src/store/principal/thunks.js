@@ -3,13 +3,13 @@ import { charactersApi } from "../../api/charactersApi";
 import { FirebaseDB } from "../../firebase/config";
 import { loadFavorites } from "../../helpers/loadFavorites";
 import {
-  setCharacters,
   startLoadingCharacters,
+  setCharacters,
   addFavorite,
-  setFavorites,
   setActiveFavorite,
-  deleteCharacterByName,
   setActiveCharacter,
+  setFavorites,
+  deleteCharacterById,
 } from "./characterSlice";
 
 export const getCharacters = (page = 1) => {
@@ -70,16 +70,16 @@ export const startLoadingFavorites = () => {
   };
 };
 
-export const startDeletingFavorite = () => {
+export const startDeletingFavoriteById = () => {
   return async (dispatch, getState) => {
     const { uid } = getState().auth;
     const { active: favorite } = getState().characters;
-    const { name } = favorite;
+    const { id } = favorite;
 
-    const favRef = doc(FirebaseDB, `${uid}/principal/favorites/${name}`);
+    const favRef = doc(FirebaseDB, `${uid}/principal/favorites/${id}`);
 
     await deleteDoc(favRef);
 
-    dispatch(deleteCharacterByName(name));
+    dispatch(deleteCharacterById(id));
   };
 };

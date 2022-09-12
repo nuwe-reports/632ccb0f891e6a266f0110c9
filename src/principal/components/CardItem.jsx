@@ -11,20 +11,14 @@ import {
   Button,
 } from "@mui/material";
 
-import {
-  addFavoriteCharacter,
-  startDeletingFavorite,
-} from "../../store/principal/thunks";
-import {
-  setActiveCharacter,
-  setActiveFavorite,
-} from "../../store/principal/characterSlice";
+import { addFavoriteCharacter } from "../../store/principal/thunks";
+import { setActiveCharacter } from "../../store/principal/characterSlice";
 import { FavoriteButton } from "./FavoriteButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { isInfavorite } from "../../helpers/isInfavorites";
-import { DeleteOutlined } from "@mui/icons-material";
-import Swal from "sweetalert2";
+
 import "sweetalert2/dist/sweetalert2.css";
+import CheckIcon from "@mui/icons-material/Check";
 
 export const CardItem = ({
   title,
@@ -36,7 +30,7 @@ export const CardItem = ({
   created,
   status,
 }) => {
-  const { favorites, active } = useSelector((state) => state.characters);
+  const { favorites } = useSelector((state) => state.characters);
 
   const dispatch = useDispatch();
 
@@ -50,23 +44,9 @@ export const CardItem = ({
     dispatch(setActiveCharacter({ image, id, species, name, created, status }));
   };
 
-  const onClickFavorite = () => {
-    dispatch(setActiveFavorite({ image, id, species, name, created, status }));
-  };
-
-  const onDelete = (name) => {
-    dispatch(startDeletingFavorite(name, favorites));
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Tu favorito fue eliminado",
-      showConfirmButton: dispatch(startDeletingFavorite(name, favorites)),
-    });
-  };
-
   return (
     <Card
-      sx={{ maxWidth: 540, marginBottom: 2 }}
+      sx={{ maxWidth: 450, marginBottom: 2 }}
       key={title}
       onClick={onCLickSelectCharacter}
     >
@@ -120,9 +100,7 @@ export const CardItem = ({
         {isInfavorite(created, favorites) ? (
           <>
             {" "}
-            <Button color="primary" onClick={onDelete}>
-              <DeleteOutlined color="error" />
-            </Button>
+            <CheckIcon color="warning" />
           </>
         ) : (
           <Button onClick={onClickAddFavorite}>

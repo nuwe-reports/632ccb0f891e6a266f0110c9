@@ -9,7 +9,6 @@ import {
   Typography,
   Link,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import "./styles.css";
 import { startLogout } from "../../store/auth/thunks";
 

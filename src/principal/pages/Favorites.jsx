@@ -14,25 +14,23 @@ export const Favorites = () => {
       <Grid
         container
         direction="row"
-        justifyContent="space-between"
+        justifyContent="space-around"
         alignItems="center"
-        width="90vw"
-        
-        sx={{backgroundColor:'orangered', marginTop:10}}
-        
+        minWidth="90%"
+        marginTop='5%'
       >
        
         <List
           sx={{
-            width: "100vw",
-            minHeight: '100vh',
+            minWidth: "100",
+            minHeight: '100',
             display: "flex",
-            justifyContent: "space-around",
+            justifyContent: "space-evenly",
             alignItems: "center",
             flexWrap: "wrap",
           }}
-          cols={3}
-          gap={4}
+       
+          
         >
           {favorites &&
             favorites.map((favorite) => (
