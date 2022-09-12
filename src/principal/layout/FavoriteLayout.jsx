@@ -8,7 +8,7 @@ export const FavoriteLayout = ({ children }) => {
      <Grid
     container
     spacing={ 0 }
-    direction= 'column'
+    direction= 'row'
     alignItems='center'
     justifyContent='space-around'
     sx={{minHeight:'100vh'}}

@@ -35,7 +35,7 @@ export const FavoriteCard = ({ title, image, id, species, name, created }) => {
 
   return (
     <Card
-      sx={{ maxWidth: 500, marginBottom: 5 }}
+      sx={{ maxWidth: 600, marginBottom: 5, marginRight:5 }}
       key={title}
       className="animate__animated animate__fadeIn"
     >
@@ -61,7 +61,7 @@ export const FavoriteCard = ({ title, image, id, species, name, created }) => {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "space-between",
         }}
       >
         <Button color="primary" onClick={onDelete}>
