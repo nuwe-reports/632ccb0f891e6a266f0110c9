@@ -1,16 +1,14 @@
 import { useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link, Link as RouterLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Drawer,
   IconButton,
   List,
-  Tab,
-  Tabs,
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { LogoutOutlined } from "@mui/icons-material";
+import { LogoutOutlined, Padding } from "@mui/icons-material";
 import { startLogout } from "../../store/auth/thunks";
 
 
@@ -31,48 +29,56 @@ const dispatch = useDispatch();
       <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
         <List style={{backgroundColor:'stealgray', height:'100%', display:'flex', flexDirection:'column', justifyContent:'start', alignItems:'center'}}>
           <>
-            <Tabs
-              textColor="inherit"
-              value={value}
-              onChange={(e, value) => setValue(value)}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              width: "200px",
+              justifyContent: "start",
+              flexDirection:'column',
+              padding:'10px',
+              height: '90%',
+              marginBottom:'10px'
+            }}
+           
+            
+          >
+            <Link
+              component={RouterLink}
+              size="small"
+              color="black"
+              to="/"
+              className="favorite-link"
+              style={{textDecoration:'none', color  :'black', borderBottom:'1px solid black', marginBottom:'20px'}}
+              underline='always'
             >
-              <Tab
-                label="Principal"
-                LinkComponent={RouterLink}
-                size="small"
-                color="secondary"
-                to="/"
-                className="favorite-link"
-              />
-              <Tab
-                label="Favoritos"
-                LinkComponent={RouterLink}
-                size="small"
-                color="secondary"
-                to="/favorites"
-                className="favorite-link"
-              />
-            </Tabs>
-
-            <div
-              style={{
-                display: "flex",
-                alignItems: "end",
-                justifyContent: "end",
-                width: "90%",
-              }}
+              {" "}
+              Principal{" "}
+            </Link>
+            <Link
+            variant='body2'
+              component={RouterLink}
+              size="small"
+              color="primary"
+              to="/favorites"
+              className="favorite-link"
+              style={{textDecoration:'none', color  :'red',borderBottom:'1px solid red', marginBottom:'20px'}}
+              underline='always'
             >
-              <Typography
-                variant="p"
-                noWrap
-                component="div"
-                alignSelf="center"
-              >
-                {displayName}
-              </Typography>
-              <IconButton color="warning" onClick={onLogout}>
-                <LogoutOutlined />
-              </IconButton>
+              {" "}
+              Favoritos{" "}
+            </Link>
+          </div>
+          <div
+            style={{ display: "flex", alignItems: "center",justifyContent:'end', marginLeft:'auto',}}
+            
+          >
+            <Typography variant="h6" noWrap component="div">
+              {displayName}
+            </Typography>
+            <IconButton color="warning" onClick={onLogout}>
+              <LogoutOutlined />
+            </IconButton>
             </div>
           </>
         </List>

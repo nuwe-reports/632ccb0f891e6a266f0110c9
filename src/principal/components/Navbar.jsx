@@ -10,6 +10,7 @@ import {
   useTheme,
   Typography,
   IconButton,
+  Link
 } from "@mui/material";
 import "./styles.css";
 import { startLogout } from "../../store/auth/thunks";
@@ -47,41 +48,48 @@ export const Navbar = () => {
         ) : (
           <>
 
-          <Tabs
-            textColor="inherit"
-            value={value}
-            onChange={(e, value) => setValue(value)}
-            
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              width: "200px",
+              justifyContent: "space-around",
+            }}
           >
-            <Tab
-              label="Principal"
-              LinkComponent={RouterLink}
+            <Link
+              component={RouterLink}
               size="small"
               color="secondary"
               to="/"
               className="favorite-link"
-            />
-            <Tab
-              label="Favoritos"
-              LinkComponent={RouterLink}
+              underline='hover'
+            >
+              {" "}
+              Principal{" "}
+            </Link>
+            <Link
+              component={RouterLink}
               size="small"
               color="secondary"
               to="/favorites"
               className="favorite-link"
-            />
-          </Tabs>
-
+              underline='hover'
+            >
+              {" "}
+              Favoritos{" "}
+            </Link>
+          </div>
           <div
-            style={{ display: "flex", alignItems: "center", justifyContent:'end' ,width: "90%",}}
+            style={{ display: "flex", alignItems: "center",justifyContent:'end', marginLeft:'auto',}}
             
           >
-            <Typography variant="h6" noWrap component="div" alignSelf='center'>
+            <Typography variant="h6" noWrap component="div">
               {displayName}
             </Typography>
             <IconButton color="warning" onClick={onLogout}>
               <LogoutOutlined />
             </IconButton>
-          </div>
+            </div>
           </>
         )}
         {/* <div
