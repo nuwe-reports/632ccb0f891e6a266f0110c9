@@ -35,9 +35,10 @@ export const FavoriteCard = ({ title, image, id, species, name, created }) => {
 
   return (
     <Card
-      sx={{ maxWidth: 600, marginBottom: 5, marginRight:5 }}
+      sx={{ maxWidth: '1000px', margin:5, width:{sx:'100%'} }}
       key={title}
       className="animate__animated animate__fadeIn"
+      
     >
       <CardActionArea>
         <CardMedia
@@ -47,6 +48,7 @@ export const FavoriteCard = ({ title, image, id, species, name, created }) => {
           sx={{ padding: 1 }}
           src={image}
           onClick={onClickFavorite}
+          
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">

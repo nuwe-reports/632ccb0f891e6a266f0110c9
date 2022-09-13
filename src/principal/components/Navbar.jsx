@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {  LogoutOutlined } from "@mui/icons-material";
@@ -12,9 +13,13 @@ import {
 import "./styles.css";
 import { startLogout } from "../../store/auth/thunks";
 
+
 export const Navbar = () => {
   const dispatch = useDispatch();
   const { displayName } = useSelector((state) => state.auth);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+
 
   const onLogout = () => {
     dispatch(startLogout());
@@ -25,16 +30,21 @@ export const Navbar = () => {
       sx={{
         width: { sm: "100%" },
         ml: { sm: "100%" },
-         display: { xs: 'none', lg: 'block', xl: 'none' } 
+        display: { xs: 'flex', lg: 'block', xl: 'block' }, 
+        flexDirection: {xs: 'column',sm:'column', md:'column'},
+        justifyContent:{xs:'center',sm:'column', md:'column', lg:'space-around', xl:'space-around'},
+        alignItems:{xs:'center',sm:'column', md:'column',lg:'center', xl:'center'}
         
       }}
     >
+   
       <Toolbar>
         <Grid
           container
           direction="row"
           justifyContent="space-around"
           alignItems="center"
+         
         >
           <div
             style={{
@@ -67,7 +77,8 @@ export const Navbar = () => {
           </div>
 
           <div
-            style={{ display: "flex", alignItems: "center", width: "200px" }}
+            style={{ display: "flex", alignItems: "center", width: "200px",}}
+            
           >
             <Typography variant="h6" noWrap component="div">
               {displayName}

@@ -1,10 +1,14 @@
 import {Box, Grid} from '@mui/material';
-import { Navbar} from '../components';
+import { Navbar } from '../components';
 
 
 
 export const PrincipalLayout = ({ children }) => {
   return (
+  
+
+    
+   
     <Grid
     container
     spacing={ 0 }
@@ -13,12 +17,13 @@ export const PrincipalLayout = ({ children }) => {
     justifyContent='center'
     sx={{minHeight:'100vh'}}
     >
-        <Navbar />
        
         <Box component='main' sx={{flexGrow:1, p:4, backgroundColor:'orange'}}>
+        <Navbar />
             {children}
             
         </Box>
     </Grid>
+   
   )
 }

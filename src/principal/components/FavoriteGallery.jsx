@@ -7,7 +7,7 @@ export const FavoriteGallery = () => {
   return (
     <Grid
         container
-        direction="column"
+        direction="row"
         justifyContent="space-around"
         alignItems="center"
         minWidth="90%"
@@ -16,12 +16,18 @@ export const FavoriteGallery = () => {
        
         <List
           sx={{
-            minWidth: "80%",
-            minHeight: '100',
+            width: "100%",
+            height: "100",
             display: "flex",
-            justifyContent: "space-evenly",
-            alignItems: "center",
+            justifyContent: {xs:'center',sm:'center', md:'space-around',lg:'space-around'},
+            alignItems: {xs:'center',sm:'center', md:'space-around',lg:'space-around'},
             flexWrap: "wrap",
+            minHeight: "100vh",
+            paddingTop:{xs:'10%', sm: '10%', md:'0px'},
+            paddingLeft:{xs:'10%',sm: '10%', md:'0px'},
+            paddingRight:{xs:'10%',sm: '10%', md:'0px'},
+            margin:{xs:'40px', md:'10px'}
+
           }}
        
           

@@ -4,6 +4,7 @@ import { Button, Grid, List } from "@mui/material";
 import { CardItem } from "./CardItem";
 import { getCharacters } from "../../store/principal/thunks";
 import { PrincipalLayout } from "../layout/PrincipalLayout";
+import { Navbar } from "./Navbar";
 
 export const ImageGallery = () => {
   const { isLoading, characters, page, prevPage } = useSelector(
@@ -18,6 +19,7 @@ export const ImageGallery = () => {
 
   return (
     <PrincipalLayout>
+  
       <Grid
         container
         direction="row"
@@ -25,7 +27,7 @@ export const ImageGallery = () => {
         alignItems="center"
         width="100%"
         className="animate__animated animate__fadeIn"
-        sx={{ backgroundColor: "orange", marginTop: 3 }}
+        sx={{ backgroundColor: "orange", margin: 5 }}
       >
         <Button
           variant="outlined"
@@ -49,10 +51,17 @@ export const ImageGallery = () => {
             height: "100",
             backgroundColor: "orange",
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            justifyContent: {xs:'center',sm:'center', md:'space-around',lg:'space-around'},
+            alignItems: {xs:'center',sm:'center', md:'space-around',lg:'space-around'},
             flexWrap: "wrap",
             minHeight: "100vh",
+            paddingTop:{xs:'10%', sm: '10%', md:'0px'},
+            paddingLeft:{xs:'10%',sm: '10%', md:'0px'},
+            paddingRight:{xs:'10%',sm: '10%', md:'0px'},
+            margin:{xs:'20px', md:'20px'}
+            
+            
+
           }}
           cols={3}
           gap={4}
