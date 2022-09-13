@@ -29,7 +29,7 @@ const dispatch = useDispatch();
   return (
     <>
       <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
-        <List style={{backgroundColor:'steelblue', height:'100%', display:'flex', flexDirection:'column', justifyContent:'start', alignItems:'center'}}>
+        <List style={{backgroundColor:'stealgray', height:'100%', display:'flex', flexDirection:'column', justifyContent:'start', alignItems:'center'}}>
           <>
             <Tabs
               textColor="inherit"
