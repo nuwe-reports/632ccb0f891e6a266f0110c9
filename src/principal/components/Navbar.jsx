@@ -1,26 +1,30 @@
 import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import {  LogoutOutlined } from "@mui/icons-material";
 import {
   AppBar,
   Toolbar,
-  IconButton,
-  Grid,
+  Tabs,
+  Tab,
+  useMediaQuery,
+  useTheme,
   Typography,
-  Link,
+  IconButton,
 } from "@mui/material";
 import "./styles.css";
 import { startLogout } from "../../store/auth/thunks";
+import { DrawerComponent } from "./DrawerComponent";
+import { LogoutOutlined } from "@mui/icons-material";
 
 
 export const Navbar = () => {
   const dispatch = useDispatch();
   const { displayName } = useSelector((state) => state.auth);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-
-
-
+  const [value, setValue] = useState(0);
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+  
+  
   const onLogout = () => {
     dispatch(startLogout());
   };
@@ -28,25 +32,59 @@ export const Navbar = () => {
     <AppBar
       position="fixed"
       sx={{
-        width: { sm: "100%" },
-        ml: { sm: "100%" },
-        display: { xs: 'flex', lg: 'block', xl: 'block' }, 
-        flexDirection: {xs: 'column',sm:'column', md:'column'},
-        justifyContent:{xs:'center',sm:'column', md:'column', lg:'space-around', xl:'space-around'},
-        alignItems:{xs:'center',sm:'column', md:'column',lg:'center', xl:'center'}
-        
+        backgroundColor: "primary",
       }}
+      
     >
-   
-      <Toolbar>
-        <Grid
-          container
-          direction="row"
-          justifyContent="space-around"
-          alignItems="center"
-         
-        >
+      <Toolbar
+      
+      >
+        {isMatch ? (
+          <>
+            <Typography>Rick And Morty</Typography>
+            <DrawerComponent />
+          </>
+        ) : (
+          <>
+
+          <Tabs
+            textColor="inherit"
+            value={value}
+            onChange={(e, value) => setValue(value)}
+            
+          >
+            <Tab
+              label="Principal"
+              LinkComponent={RouterLink}
+              size="small"
+              color="secondary"
+              to="/"
+              className="favorite-link"
+            />
+            <Tab
+              label="Favoritos"
+              LinkComponent={RouterLink}
+              size="small"
+              color="secondary"
+              to="/favorites"
+              className="favorite-link"
+            />
+          </Tabs>
+
           <div
+            style={{ display: "flex", alignItems: "center", justifyContent:'end' ,width: "90%",}}
+            
+          >
+            <Typography variant="h6" noWrap component="div" alignSelf='center'>
+              {displayName}
+            </Typography>
+            <IconButton color="warning" onClick={onLogout}>
+              <LogoutOutlined />
+            </IconButton>
+          </div>
+          </>
+        )}
+        {/* <div
             style={{
               display: "flex",
               alignItems: "center",
@@ -87,7 +125,7 @@ export const Navbar = () => {
               <LogoutOutlined />
             </IconButton>
           </div>
-        </Grid>
+        */}
       </Toolbar>
     </AppBar>
   );
