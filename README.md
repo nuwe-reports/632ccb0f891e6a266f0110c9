@@ -84,7 +84,7 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar **react, r
   ![not found](https://user-images.githubusercontent.com/90207514/189444783-9a06eee1-9c3c-404c-95b8-21b371e6d520.jpg)
   
   ## Alerta confirmación de eliminación de favoritos
-  ![alertadef](https://user-images.githubusercontent.com/90207514/189541320-06bfcb01-333a-4146-b5c0-1c12f213b21d.jpg)
+  ![image](https://user-images.githubusercontent.com/90207514/190614952-6e365610-0737-4b0e-9c3f-b3c49986562f.png)
 
  ## Demo
  ***https://rickandmortych22.netlify.app/auth/login***
