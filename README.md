@@ -87,7 +87,7 @@ Este proyecto fue muy interesante de realizar, me decidí en utilizar **react, r
   ![alertadef](https://user-images.githubusercontent.com/90207514/189541320-06bfcb01-333a-4146-b5c0-1c12f213b21d.jpg)
 
  ## Demo
- ***https://rickandmortyappfh22.netlify.app/auth/login***
+ ***https://rickandmortych22.netlify.app/auth/login***
  
  ## Autor ✒️.
  **Facundo Emmanuel Herrera**
